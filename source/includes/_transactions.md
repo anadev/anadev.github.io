@@ -847,7 +847,7 @@ curl -X POST
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "sku=GCASH_COLLECT"
      -F "cost=999"
-     -F "payload[from_account_id]=09987654321"
+     -F "payload[account_id]=09987654321"
      -F "customer[name]=Koushirou Sugahara"
      -F "customer[email]=koushirou_sugahara@armyspy.com"
      -F "customer[contact_number]=09123456789"
@@ -862,7 +862,7 @@ uri = URI("http://www.payswitch.net/api/transactions")
 params = {
   "sku" => "GCASH_COLLECT",
   "cost" => "999",
-  "payload[from_account_id]" => "09987654321",
+  "payload[account_id]" => "09987654321",
   "customer[name]" => "Koushirou Sugahara",
   "customer[email]" => "koushirou_sugahara@armyspy.com",
   "customer[contact_number]" => "09123456789",
@@ -889,7 +889,7 @@ HEADERS = {
 PARAMS = {
     'sku' : 'GCASH_COLLECT',
     'cost' : '999',
-    'payload[from_account_id]' : '09987654321',
+    'payload[account_id]' : '09987654321',
     'customer[name]' : 'Koushirou Sugahara',
     'customer[email]' : 'koushirou_sugahara@armyspy.com',
     'customer[contact_number]' : '09123456789',
