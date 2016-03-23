@@ -497,16 +497,6 @@ http://www.payswitch.net/api/transactions/&lt;id&gt;
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>The JSON return value when you try to fetch a non-existing transactions</p>
-</blockquote>
-<pre><code class="highlight json"><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Couldn't find Transaction with id=500"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
 <p>Get the details of a specific transaction by using transaction id.</p>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -1166,7 +1156,7 @@ http://www.payswitch.net/api/transactions
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
      -F <span class="s2">"sku=GCASH_COLLECT"</span>
      -F <span class="s2">"cost=999"</span>
-     -F <span class="s2">"payload[from_account_id]=09987654321"</span>
+     -F <span class="s2">"payload[account_id]=09987654321"</span>
      -F <span class="s2">"customer[name]=Koushirou Sugahara"</span>
      -F <span class="s2">"customer[email]=koushirou_sugahara@armyspy.com"</span>
      -F <span class="s2">"customer[contact_number]=09123456789"</span>
@@ -1179,7 +1169,7 @@ http://www.payswitch.net/api/transactions
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"sku"</span> <span class="o">=&gt;</span> <span class="s2">"GCASH_COLLECT"</span><span class="p">,</span>
   <span class="s2">"cost"</span> <span class="o">=&gt;</span> <span class="s2">"999"</span><span class="p">,</span>
-  <span class="s2">"payload[from_account_id]"</span> <span class="o">=&gt;</span> <span class="s2">"09987654321"</span><span class="p">,</span>
+  <span class="s2">"payload[account_id]"</span> <span class="o">=&gt;</span> <span class="s2">"09987654321"</span><span class="p">,</span>
   <span class="s2">"customer[name]"</span> <span class="o">=&gt;</span> <span class="s2">"Koushirou Sugahara"</span><span class="p">,</span>
   <span class="s2">"customer[email]"</span> <span class="o">=&gt;</span> <span class="s2">"koushirou_sugahara@armyspy.com"</span><span class="p">,</span>
   <span class="s2">"customer[contact_number]"</span> <span class="o">=&gt;</span> <span class="s2">"09123456789"</span><span class="p">,</span>
@@ -1204,7 +1194,7 @@ http://www.payswitch.net/api/transactions
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'sku'</span> <span class="p">:</span> <span class="s">'GCASH_COLLECT'</span><span class="p">,</span>
     <span class="s">'cost'</span> <span class="p">:</span> <span class="s">'999'</span><span class="p">,</span>
-    <span class="s">'payload[from_account_id]'</span> <span class="p">:</span> <span class="s">'09987654321'</span><span class="p">,</span>
+    <span class="s">'payload[account_id]'</span> <span class="p">:</span> <span class="s">'09987654321'</span><span class="p">,</span>
     <span class="s">'customer[name]'</span> <span class="p">:</span> <span class="s">'Koushirou Sugahara'</span><span class="p">,</span>
     <span class="s">'customer[email]'</span> <span class="p">:</span> <span class="s">'koushirou_sugahara@armyspy.com'</span><span class="p">,</span>
     <span class="s">'customer[contact_number]'</span> <span class="p">:</span> <span class="s">'09123456789'</span><span class="p">,</span>
@@ -1222,7 +1212,7 @@ http://www.payswitch.net/api/transactions
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"from_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09987654321"</span><span class="w">
+        </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09987654321"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-15T12:33:32.315+08:00"</span><span class="p">,</span><span class="w">
@@ -1284,7 +1274,7 @@ http://www.payswitch.net/api/transactions
 <td>The amount of the transaction</td>
 </tr>
 <tr>
-<td>payload[from_account_id]</td>
+<td>payload[account_id]</td>
 <td>string<br />(required)</td>
 <td>The account number of the customer</td>
 </tr>
@@ -1337,7 +1327,7 @@ http://www.payswitch.net/api/transactions
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
      -F <span class="s2">"sku=123"</span>
      -F <span class="s2">"cost=999"</span>
-     -F <span class="s2">"payload[from_account_id]=09987654321"</span>
+     -F <span class="s2">"payload[account_id]=09987654321"</span>
      -F <span class="s2">"customer[name]=Koushirou Sugahara"</span>
      -F <span class="s2">"customer[email]=koushirou_sugahara@armyspy.com"</span>
      -F <span class="s2">"customer[contact_number]=09123456789"</span>
@@ -1350,7 +1340,7 @@ http://www.payswitch.net/api/transactions
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"sku"</span> <span class="o">=&gt;</span> <span class="s2">"123"</span><span class="p">,</span>
   <span class="s2">"cost"</span> <span class="o">=&gt;</span> <span class="s2">"999"</span><span class="p">,</span>
-  <span class="s2">"payload[from_account_id]"</span> <span class="o">=&gt;</span> <span class="s2">"09987654321"</span><span class="p">,</span>
+  <span class="s2">"payload[account_id]"</span> <span class="o">=&gt;</span> <span class="s2">"09987654321"</span><span class="p">,</span>
   <span class="s2">"customer[name]"</span> <span class="o">=&gt;</span> <span class="s2">"Koushirou Sugahara"</span><span class="p">,</span>
   <span class="s2">"customer[email]"</span> <span class="o">=&gt;</span> <span class="s2">"koushirou_sugahara@armyspy.com"</span><span class="p">,</span>
   <span class="s2">"customer[contact_number]"</span> <span class="o">=&gt;</span> <span class="s2">"09123456789"</span><span class="p">,</span>
@@ -1375,7 +1365,7 @@ http://www.payswitch.net/api/transactions
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'sku'</span> <span class="p">:</span> <span class="s">'123'</span><span class="p">,</span>
     <span class="s">'cost'</span> <span class="p">:</span> <span class="s">'999'</span><span class="p">,</span>
-    <span class="s">'payload[from_account_id]'</span> <span class="p">:</span> <span class="s">'09987654321'</span><span class="p">,</span>
+    <span class="s">'payload[account_id]'</span> <span class="p">:</span> <span class="s">'09987654321'</span><span class="p">,</span>
     <span class="s">'customer[name]'</span> <span class="p">:</span> <span class="s">'Koushirou Sugahara'</span><span class="p">,</span>
     <span class="s">'customer[email]'</span> <span class="p">:</span> <span class="s">'koushirou_sugahara@armyspy.com'</span><span class="p">,</span>
     <span class="s">'customer[contact_number]'</span> <span class="p">:</span> <span class="s">'09123456789'</span><span class="p">,</span>
@@ -1393,7 +1383,7 @@ http://www.payswitch.net/api/transactions
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"from_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09987654321"</span><span class="w">
+        </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09987654321"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-15T12:33:32.315+08:00"</span><span class="p">,</span><span class="w">
@@ -1455,7 +1445,7 @@ http://www.payswitch.net/api/transactions
 <td>The amount of the transaction</td>
 </tr>
 <tr>
-<td>payload[from_account_id]</td>
+<td>payload[account_id]</td>
 <td>string<br />(required)</td>
 <td>The account number of the customer</td>
 </tr>
@@ -2329,6 +2319,202 @@ http://www.payswitch.net/api/products/top
 </tr>
 </tbody></table>
 
+          <h1 id="receipts">Receipts</h1>
+
+<h2 id="send-receipt-via-sms">Send Receipt via SMS</h2>
+<pre><code class="highlight shell">curl -X POST
+     -F <span class="s1">'type=sms'</span>
+     -F <span class="s1">'recipient=09273031099'</span>
+http://www.payswitch.net/api/receipts/&lt;id&gt;
+</code></pre>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://www.payswitch.net/api/receipts/&lt;id&gt;'</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"type"</span> <span class="o">=&gt;</span> <span class="s2">"sms"</span><span class="p">,</span>
+    <span class="s2">"recipient"</span> <span class="o">=&gt;</span> <span class="s2">"09273031099"</span>
+<span class="p">}</span>
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">request_uri</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
+<span class="n">request_uri</span><span class="p">.</span><span class="nf">set_form_data</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/receipts/&lt;id&gt;"</span>
+<span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"type"</span> <span class="p">:</span> <span class="s">"sms"</span><span class="p">,</span>
+    <span class="s">"recipient"</span> <span class="p">:</span> <span class="s">"09273031099"</span>
+<span class="p">}</span>
+<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre>
+
+<blockquote>
+<p>The JSON return value looks like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The JSON return value when you try to get a receipt for a non-existent transaction</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Couldn't find transaction with id=500"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Send a copy of the receipt of a specific transaction with the provided transaction id via SMS.</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string<br/>(optional)</td>
+<td>Method of sending receipt. (email or sms)</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>string<br/>(optional)</td>
+<td>Mobile number where the receipt will be sent.</td>
+</tr>
+</tbody></table>
+
+<h2 id="send-receipt-via-e-mail">Send Receipt via E-mail</h2>
+<pre><code class="highlight shell">curl -X POST
+     -F <span class="s1">'type=email'</span>
+     -F <span class="s1">'recipient=warex03@gmail.com'</span>
+http://www.payswitch.net/api/receipts/&lt;id&gt;
+</code></pre>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://www.payswitch.net/api/receipts/&lt;id&gt;'</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"type"</span> <span class="o">=&gt;</span> <span class="s2">"email"</span><span class="p">,</span>
+    <span class="s2">"recipient"</span> <span class="o">=&gt;</span> <span class="s2">"warex03@gmail.com"</span>
+<span class="p">}</span>
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">request_uri</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
+<span class="n">request_uri</span><span class="p">.</span><span class="nf">set_form_data</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/receipts/&lt;id&gt;"</span>
+<span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"type"</span> <span class="p">:</span> <span class="s">"email"</span><span class="p">,</span>
+    <span class="s">"recipient"</span> <span class="p">:</span> <span class="s">"benjamin.cueto@payswitch.net"</span>
+<span class="p">}</span>
+<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre>
+
+<blockquote>
+<p>The JSON return value looks like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The JSON return value when you try to get a receipt for a non-existent transaction</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Couldn't find transaction with id=500"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Send a copy of the receipt of a specific transaction with the provided transaction id via e-mail.</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string<br/>(optional)</td>
+<td>Method of sending receipt. (email or sms)</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>string<br/>(optional)</td>
+<td>E-mail address where the receipt will be sent.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The JSON return value looks like this if the &lsquo;type&rsquo; field is left empty:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39639</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09473616056"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-13T15:37:25.000+08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"provider_refno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"082109486493"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"provider_message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request successfully processes."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transaction_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction has been successful"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branch"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Batong Malake Public Market MPC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Direct Agent 5"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"provider_product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">96</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"product_category_root_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">96</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smart All Text 10"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OksPinoy"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
           <h1 id="merchant">Merchant</h1>
 
 <h2 id="get-all-branches-of-merchant">Get All Branches of merchant</h2>
@@ -2719,11 +2905,11 @@ http://www.payswitch.net/api/branches/agents
 <pre><code class="highlight shell">curl -X GET
      -H <span class="s1">'X-User-Email: warex03@gmail.com'</span>
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
-http://www.payswitch.net/api/agents/2
+http://www.payswitch.net/api/branches/2
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/agents/2"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/branches/2"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">request_uri</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
@@ -2735,7 +2921,7 @@ http://www.payswitch.net/api/agents/2
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/agents/2"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/branches/2"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
