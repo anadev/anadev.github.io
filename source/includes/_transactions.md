@@ -907,7 +907,7 @@ response = urllib2.urlopen(request).read()
 {
     "id": 1566,
     "payload": {
-        "from_account_id": "09987654321"
+        "account_id": "09987654321"
     },
     "cost": "1.0",
     "created_at": "2015-05-15T12:33:32.315+08:00",
@@ -955,7 +955,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 sku | string<br />(required) | The product's SKU code
 cost | string<br />(required) | The amount of the transaction
-payload[from_account_id] | string<br />(required) | The account number of the customer
+payload[account_id] | string<br />(required) | The account number of the customer
 customer[name] | string<br />(optional) | The customer's name
 customer[email] | string<br />(optional) | The customer's email
 customer[contact_number] | string<br />(optional) | The customer's contact number
@@ -977,7 +977,7 @@ curl -X POST
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "sku=123"
      -F "cost=999"
-     -F "payload[from_account_id]=09987654321"
+     -F "payload[account_id]=09987654321"
      -F "customer[name]=Koushirou Sugahara"
      -F "customer[email]=koushirou_sugahara@armyspy.com"
      -F "customer[contact_number]=09123456789"
@@ -992,7 +992,7 @@ uri = URI("http://www.payswitch.net/api/transactions")
 params = {
   "sku" => "123",
   "cost" => "999",
-  "payload[from_account_id]" => "09987654321",
+  "payload[account_id]" => "09987654321",
   "customer[name]" => "Koushirou Sugahara",
   "customer[email]" => "koushirou_sugahara@armyspy.com",
   "customer[contact_number]" => "09123456789",
@@ -1019,7 +1019,7 @@ HEADERS = {
 PARAMS = {
     'sku' : '123',
     'cost' : '999',
-    'payload[from_account_id]' : '09987654321',
+    'payload[account_id]' : '09987654321',
     'customer[name]' : 'Koushirou Sugahara',
     'customer[email]' : 'koushirou_sugahara@armyspy.com',
     'customer[contact_number]' : '09123456789',
@@ -1037,7 +1037,7 @@ response = urllib2.urlopen(request).read()
 {
     "id": 1566,
     "payload": {
-        "from_account_id": "09987654321"
+        "account_id": "09987654321"
     },
     "cost": "1.0",
     "created_at": "2015-05-15T12:33:32.315+08:00",
@@ -1085,7 +1085,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 product_id | string<br />(required) | The product's ID
 cost | string<br />(required) | The amount of the transaction
-payload[from_account_id] | string<br />(required) | The account number of the customer
+payload[account_id] | string<br />(required) | The account number of the customer
 customer[name] | string<br />(optional) | The customer's name
 customer[email] | string<br />(optional) | The customer's email
 customer[contact_number] | string<br />(optional) | The customer's contact number
