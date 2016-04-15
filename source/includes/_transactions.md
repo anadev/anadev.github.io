@@ -14,7 +14,7 @@ curl -X GET
      -F "date_to=4/2/2015"
      -F "branch_id=2"
      -F "agent_id=3"
-http://www.payswitch.net/api/transactions
+http://www.payswitch.net/api/v2/transactions
 ```
 
 ```ruby
@@ -1090,6 +1090,64 @@ customer[name] | string<br />(optional) | The customer's name
 customer[email] | string<br />(optional) | The customer's email
 customer[contact_number] | string<br />(optional) | The customer's contact number
 customer[address] | string<br />(optional) | The customer's address
+
+### Header Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+X-User-Email | string<br/>(required) | The user's email address
+X-User-Token | string<br/>(required) | The user's authentication token
+
+## Get Revenue Report
+
+```shell
+curl -X GET 
+     -H "X-User-Email: meynardbs@gmail.com" 
+     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS" 
+"https://www.payswitch.net/api/v2/transactions/revenue-report"
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://beta.payswitch.net/api/v2/transactions/revenue-report")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request["x-user-email"] = 'meynardbs@gmail.com'
+request["x-user-token"] = 'HMMVS-fJe_kLTxK2wfRS'
+request.body = "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"product_id\"\r\n\r\n336\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"payload[account_id]\"\r\n\r\n09158233358\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"convenience_fee\"\r\n\r\n2\r\n-----011000010111000001101001--"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+```
+
+> The JSON return value looks like this:
+
+```
+{
+  "date_from": "2016-04-13T13:30:27.084+08:00",
+  "date_to": "2016-04-14T05:30:27+00:00",
+  "revenue_reports": [],
+  "total_transaction_cost": 0,
+  "total_convenience_fee": 0,
+  "total_revenue": 0,
+  "transactions": []
+}
+```
+
+Get revenue report based on number of transactions for the last 24 hours
+
+### HTTP Request
+
+`GET https://www.payswitch.net/api/v2/transactions/revenue-report`
 
 ### Header Parameters
 
