@@ -24,7 +24,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/agents"
 HEADERS = {
@@ -32,8 +32,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output
@@ -113,7 +112,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/agents/8"
 HEADERS = {
@@ -121,8 +120,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output

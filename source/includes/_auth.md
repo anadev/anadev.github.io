@@ -3,10 +3,10 @@
 ## Get Session Token
 
 ```shell
-curl -X POST 
-     -F "user[email]=meynardbs@gmail.com" 
-     -F "user[password]=password" 
-     -F "grant_type=password" 
+curl -X POST
+     -F "user[email]=meynardbs@gmail.com"
+     -F "user[password]=password"
+     -F "grant_type=password"
 "https://www.payswitch.net/oauth/token"
 ```
 
@@ -15,7 +15,16 @@ curl -X POST
 ```
 
 ```python
+import requests
 
+URL = "https://www.payswitch.net/oauth/token"
+PARAMS = {
+  'user[email]' : 'meynarddbs@gmail.com',
+  'user[password]' : 'password',
+  'grant_type' : 'password'
+}
+
+response = requests.post(URL, data=PARAMS)
 
 ```
 > JSON Output
@@ -42,5 +51,3 @@ Parameter | Type | Description
 user[email] | string</br>(required) | The user's email address
 user[password] | string</br>(required) | The user's password
 grant_type | string</br>(required) | Always use `password`
-
-

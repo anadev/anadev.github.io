@@ -42,7 +42,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/transactions"
 HEADERS = {
@@ -58,11 +58,8 @@ PARAMS = {
     'branch_id' : 2,
     'agent_id' : 3
 }
-QUERY_PARAMS = urllib.urlencode(PARAMS)
-URL = URL + '?' + QUERY_PARAMS
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS, data=PARAMS)
 ```
 
 > The JSON return value looks like this:
@@ -1101,9 +1098,9 @@ X-User-Token | string<br/>(required) | The user's authentication token
 ## Get Revenue Report
 
 ```shell
-curl -X GET 
-     -H "X-User-Email: meynardbs@gmail.com" 
-     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS" 
+curl -X GET
+     -H "X-User-Email: meynardbs@gmail.com"
+     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
 "https://www.payswitch.net/api/v2/transactions/revenue-report"
 ```
 

@@ -3,9 +3,9 @@
 ## Get Transaction Sales
 
 ```shell
-curl -X GET 
-     -H "X-User-Email: meynardbs@gmail.com" 
-     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS" 
+curl -X GET
+     -H "X-User-Email: meynardbs@gmail.com"
+     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
      -H "https://beta.payswitch.net/api/v2/analytics/sales"
 ```
 
@@ -28,6 +28,15 @@ puts response.read_body
 ```
 
 ```python
+import requests
+
+URL = "https://beta.payswitch.net/api/v2/analytics/sales"
+HEADERS = {
+  'X-User-Email' : 'meynardbs@gmail.com',
+  'X-User-Token' : 'HMMVS-fJe_kLTxK2wfRS'
+}
+
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > The JSON return value looks like this:

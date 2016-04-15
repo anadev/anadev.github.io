@@ -1,4 +1,4 @@
-# Branches 
+# Branches
 
 ## Get All Branches
 
@@ -24,7 +24,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/branches"
 HEADERS = {
@@ -32,8 +32,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output
@@ -106,7 +105,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/branches/agents"
 HEADERS = {
@@ -114,8 +113,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output for Merchant
@@ -244,7 +242,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/branches/2"
 HEADERS = {
@@ -252,8 +250,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output

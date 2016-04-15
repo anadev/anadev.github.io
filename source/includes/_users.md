@@ -24,16 +24,15 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
-URL = "http://www.payswitch.net/api/users/current"
+URL = "https://www.payswitch.net/api/users/current"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 > JSON output
 

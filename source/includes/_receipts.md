@@ -26,19 +26,15 @@ body = response.body
 ```
 
 ```python
-import urllib2
-import urllib
+import requests
 
 URL = "http://www.payswitch.net/api/receipts/<id>"
 PARAMS = {
 	"type" : "sms",
 	"recipient" : "09273031099"
 }
-QUERY_PARAMS = urllib.urlencode(PARAMS)
-URL = URL + '?' + QUERY_PARAMS
 
-request = urllib2.Request(URL)
-response = urllib2.urlopen(request).read()
+response = requests.post(URL, data=PARAMS)
 ```
 
 > The JSON return value looks like this:
@@ -93,19 +89,14 @@ body = response.body
 ```
 
 ```python
-import urllib2
-import urllib
+import requests
 
 URL = "http://www.payswitch.net/api/receipts/<id>"
 PARAMS = {
 	"type" : "email",
 	"recipient" : "benjamin.cueto@payswitch.net"
 }
-QUERY_PARAMS = urllib.urlencode(PARAMS)
-URL = URL + '?' + QUERY_PARAMS
-
-request = urllib2.Request(URL)
-response = urllib2.urlopen(request).read()
+response = requests.post(URL, data=PARAMS)
 ```
 
 > The JSON return value looks like this:
