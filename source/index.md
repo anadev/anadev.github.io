@@ -13,9 +13,11 @@ toc_footers:
 includes:
   - introduction
   - register-user
+  - auth
   - users
   - v2/users
   - transactions
+  - analytics
   - product-categories
   - products
   - receipts
