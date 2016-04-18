@@ -77,7 +77,11 @@ Get the main product categories.
 
 ### HTTP Request
 
+### V1
 `GET http://www.payswitch.net/api/product_categories/main`
+
+### V2
+`GET https://www.payswitch.net/api/v2/product_categories/main`
 
 ### Header Parameters
 
@@ -164,7 +168,11 @@ Get the product categories containing the list of their products (if available).
 
 ### HTTP Request
 
+### V1
 `GET http://www.payswitch.net/api/product_categories/<id>`
+
+### V2
+`GET https://www.payswitch.net/api/v2/product_categories/<id>`
 
 ### Header Parameters
 

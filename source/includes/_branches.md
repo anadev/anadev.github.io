@@ -348,3 +348,64 @@ User Type | Has access | Description
 Merchant | TRUE | Return agent details.
 Branch | FALSE | Permission error message.
 Agent | FALSE | Permission error message.
+
+## Disable / Enable an Agent
+
+```shell
+curl -X PUT 
+     -H "X-User-Email: meynardbs@gmail.com" 
+     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
+ "https://www.payswitch.net/api/v2/branches/<branch_id>/agents/<agent_id>/disable"
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://www.payswitch.net/api/v2/branches//agents//disable")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Put.new(url)
+request["x-user-email"] = 'meynardbs@gmail.com'
+request["x-user-token"] = 'HMMVS-fJe_kLTxK2wfRS'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+
+```
+> JSON Output
+
+```json
+{
+  "id": 85,
+  "email": "meynardbs@gmail.com",
+  "branch_id": 2,
+  "name": "Meynard Soriano",
+  "contact_number": "09158233358",
+  "banned": true,
+  "balance": "8.0"
+}
+```
+
+Disable / enable an agent given its branch id and agent id.
+
+### HTTP REQUEST
+
+`PUT`
+`https://www.payswitch.net/api/v2/branches/`
+`<branch_id>/agents/<agent_id>/disable`
+
+### HEADER PARAMETERS
+
+Parameter | Type | Description
+--------- | ---- | -----------   
+X-User-Email | string<br/>(required) | The user's email address
+X-User-Token | string<br/>(required) | The user's authentication token
+
+
