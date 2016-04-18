@@ -10,13 +10,13 @@ curl -X PUT
      -F "contact_number=09271234567"
      -F "password=newpass"
      -F "current_password=oldpass"
-http://www.payswitch.net/api/v2/users/<id>
+https://www.payswitch.net/api/v2/users/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/v2/users/<id>")
+uri = URI("https://www.payswitch.net/api/v2/users/<id>")
 params = {
   name: "Arvin Dinosaur",
   contact_number: "09271234567",
@@ -26,6 +26,8 @@ params = {
 uri.query = URI.encode_www_form(params)
 
 http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request_uri = Net::HTTP::Put.new(uri.request_uri)
 request_uri.add_field("X-User-Email", "warex03@gmail.com")
 request_uri.add_field("X-User-Token", "_KHS4euMs1At4jsUHHdR")
@@ -35,24 +37,15 @@ body = response.body
 ```
 
 ```python
-import urllib
-import urllib2
+import urllib, httplib
 
-URL = "http://www.payswitch.net/api/v2/users/<id>"
+URL = "www.payswitch.net"
+URI = "/api/v2/users/<id>"
 HEADERS = {
+    "Content-type": "application/x-www-form-urlencoded",
     "X-User-Email" : "warex03@gmail.com",
     "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
 }
-import urllib
-import urllib2
-
-OPENER = urllib2.build_opener(urllib2.HTTPHandler)
-URL = "http://www.payswitch.net/api/v2/users/<id>"
-HEADERS = {
-    "X-User-Email" : "warex03@gmail.com",
-    "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
-}
-
 DATA = {
   "name" : "Arvin Dinosaur",
   "contact_number" : "09271234567",
@@ -60,10 +53,11 @@ DATA = {
   "current_password" : "oldpass"
 }
 
-data = urllib.urlencode(DATA)
-request = urllib2.Request(URL, data=data, headers=HEADERS)
-request.get_method = lambda: 'PUT'
-response = urllib2.urlopen(request).read()
+params = urllib.urlencode(DATA)
+conn = httplib.HTTPSConnection(URL)
+conn.request("PUT", URI, params, HEADERS)
+response = conn.getresponse()
+data = response.read()
 ```
 > JSON output
 
@@ -86,9 +80,9 @@ response = urllib2.urlopen(request).read()
 
 Update the information of the current user
 
-### HTTP Request
+### HTTPS Request
 
-`PUT http://www.payswitch.net/api/v2/users/<id>`
+`PUT https://www.payswitch.net/api/v2/users/<id>`
 
 ### Payload
 
@@ -97,11 +91,12 @@ Parameter | Type | Description
 name | string<br />(optional) | The user's name
 contact_number | string<br />(optional) | The user's contact number
 current_password | string<br />(required) | The user's current password
-password | string<br />(required) | The user's new password
+password | string<br />(optional) | The user's new password
 
 ### Header Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
+Content-type | string<br />(optional) | For some libraries that url encodes the payload, specify the value as 'application/x-www-form-urlencoded'
 X-User-Email | string<br/>(required) | The user's email address
 X-User-Token | string<br/>(required) | The user's authentication token
