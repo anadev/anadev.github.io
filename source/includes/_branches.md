@@ -64,7 +64,13 @@ Get the list of branches.
 
 ### HTTP REQUEST
 
+### V1
+
 `GET http://www.payswitch.net/api/branches`
+
+### V2
+
+`GET https://www.payswitch.net/api/v2/branches`
 
 ### HEADER PARAMETERS
 
@@ -320,7 +326,13 @@ Get the details of a branch and its agents
 
 ### HTTP REQUEST
 
+### V1
+
 `GET http://www.payswitch.net/api/branches/<id>`
+
+### V2
+
+`GET https://beta.payswitch.net/api/v2/branches/<id>/agents`
 
 ### HEADER PARAMETERS
 
