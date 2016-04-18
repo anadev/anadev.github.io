@@ -20,6 +20,7 @@ includes:
   - analytics
   - product-categories
   - products
+  - philsmile
   - receipts
   - merchants
   - branches
