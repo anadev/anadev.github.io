@@ -322,7 +322,7 @@ response = requests.get(URL, headers=HEADERS)
 ]
 ```
 
-Get the details of a branch and its agents
+Get the details of a branch and its agents given its id.
 
 ### HTTP REQUEST
 
@@ -332,7 +332,7 @@ Get the details of a branch and its agents
 
 ### V2
 
-`GET https://beta.payswitch.net/api/v2/branches/<id>/agents`
+`GET https://www.payswitch.net/api/v2/branches/<id>/agents`
 
 ### HEADER PARAMETERS
 
