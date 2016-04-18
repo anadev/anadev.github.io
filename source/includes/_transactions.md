@@ -14,13 +14,13 @@ curl -X GET
      -F "date_to=4/2/2015"
      -F "branch_id=2"
      -F "agent_id=3"
-http://www.payswitch.net/api/v2/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   per_page: 2,
   page: 1,
@@ -44,7 +44,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -232,7 +232,14 @@ Get all successful transactions of the user and all its branches/agents.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/transactions`
+### V1
+
+`GET https://www.payswitch.net/api/transactions`
+
+### V2
+
+`GET https://www.payswitch.net/api/v2/transactions`
+
 
 ### Query Parameters
 
@@ -258,13 +265,13 @@ X-User-Token | string<br/>(required) | The user's authentication token
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/transactions/<id>
+https://www.payswitch.net/api/transactions/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions/<id>")
+uri = URI("https://www.payswitch.net/api/transactions/<id>")
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
 request_uri.add_field('X-User-Email', 'warex03@gmail.com')
@@ -277,7 +284,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions/<id>"
+URL = "https://www.payswitch.net/api/transactions/<id>"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -335,7 +342,7 @@ Get the details of a specific transaction by using transaction id.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/transactions/<id>`
+`GET https://www.payswitch.net/api/transactions/<id>`
 
 ### Header Parameters
 
@@ -353,13 +360,13 @@ curl -X POST
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "sku=GLOBE15"
      -F "payload[account_id]=09273031099"
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   "sku" => "GLOBE15",
   "payload[account_id]" => "09273031099"
@@ -377,7 +384,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -440,7 +447,7 @@ Create a transaction by passing the sku and mobile number as payload.
 
 ### HTTP Request
 
-`POST http://www.payswitch.net/api/transactions`
+`POST https://www.payswitch.net/api/transactions`
 
 ### Transaction Payloads
 
@@ -465,13 +472,13 @@ curl -X POST
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "product_id=336"
      -F "payload[account_id]=09273031099"
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   "product_id" => 336,
   "payload[account_id]" => "09273031099"
@@ -489,7 +496,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -552,7 +559,7 @@ Create a transaction by passing the product id and mobile number as payload.
 
 ### HTTP Request
 
-`POST http://www.payswitch.net/api/transactions`
+`POST https://www.payswitch.net/api/transactions`
 
 ### Transaction Payloads
 
@@ -582,13 +589,13 @@ curl -X POST
      -F "customer[email]=koushirou_sugahara@armyspy.com"
      -F "customer[contact_number]=09123456789"
      -F "customer[address]=Tokyo Japan"
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   "sku" => "MAYNILADWATER",
   "cost" => "999",
@@ -612,7 +619,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -682,7 +689,7 @@ Create a Bills transaction by passing the sku, cost and account number.
 
 ### HTTP Request
 
-`POST http://www.payswitch.net/api/transactions`
+`POST https://www.payswitch.net/api/transactions`
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -716,13 +723,13 @@ curl -X POST
      -F "customer[email]=koushirou_sugahara@armyspy.com"
      -F "customer[contact_number]=09123456789"
      -F "customer[address]=Tokyo Japan"
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   "product_id" => "183",
   "cost" => "999",
@@ -746,7 +753,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -816,7 +823,7 @@ Create a Bills transaction by passing the product id, cost and account number.
 
 ### HTTP Request
 
-`POST http://www.payswitch.net/api/transactions`
+`POST https://www.payswitch.net/api/transactions`
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -849,13 +856,13 @@ curl -X POST
      -F "customer[email]=koushirou_sugahara@armyspy.com"
      -F "customer[contact_number]=09123456789"
      -F "customer[address]=Tokyo Japan"
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   "sku" => "GCASH_COLLECT",
   "cost" => "999",
@@ -878,7 +885,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -946,7 +953,7 @@ Create a Mobile Money transaction by passing the sku, cost and account number.
 
 ### HTTP Request
 
-`POST http://www.payswitch.net/api/transactions`
+`POST https://www.payswitch.net/api/transactions`
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -979,13 +986,13 @@ curl -X POST
      -F "customer[email]=koushirou_sugahara@armyspy.com"
      -F "customer[contact_number]=09123456789"
      -F "customer[address]=Tokyo Japan"
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/transactions")
+uri = URI("https://www.payswitch.net/api/transactions")
 params = {
   "sku" => "123",
   "cost" => "999",
@@ -1008,7 +1015,7 @@ body = response.body
 ```python
 import urllib2
 
-URL = "http://www.payswitch.net/api/transactions"
+URL = "https://www.payswitch.net/api/transactions"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -1076,7 +1083,7 @@ Create a Mobile Money transaction by passing the product ID, cost and account nu
 
 ### HTTP Request
 
-`POST http://www.payswitch.net/api/transactions`
+`POST https://www.payswitch.net/api/transactions`
 
 Parameter | Type | Description
 --------- | ---- | -----------
