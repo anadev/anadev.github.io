@@ -14,6 +14,7 @@ includes:
   - introduction
   - register-user
   - users
+  - v2/users
   - transactions
   - product-categories
   - products

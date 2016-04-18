@@ -5,8 +5,8 @@
 
 ```shell
 curl -X GET
-     -H 'X-User-Email: warex03@gmail.com'
-     -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
+     -H "X-User-Email: warex03@gmail.com"
+     -H "X-User-Token: _KHS4euMs1At4jsUHHdR"
      -F "per_page=2"
      -F "page=1"
      -F "prod_cat_id=1"
@@ -902,7 +902,7 @@ response = urllib2.urlopen(request).read()
 ```
 
 > The JSON return value looks like this:
-  
+
 ```json
 {
     "id": 1566,
@@ -1032,7 +1032,7 @@ response = urllib2.urlopen(request).read()
 ```
 
 > The JSON return value looks like this:
-  
+
 ```json
 {
     "id": 1566,
