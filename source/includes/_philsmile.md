@@ -102,7 +102,7 @@ https://www.payswitch.net/api/philsmile/bills
 require 'uri'
 require 'net/http'
 
-uri = URI("https://www.payswitch.net/api/philsmile/schools?schoolid=1738&studentid=14300006")
+uri = URI("https://www.payswitch.net/api/philsmile/bills")
 
 params = {
   schooldid: 1738,
@@ -133,8 +133,8 @@ HEADERS = {
     "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
 }
 DATA = {
-  schoolid: 1738,
-  studentid: 14300006
+  "schoolid": "1738",
+  "studentid": "14300006"
 }
 
 conn = httplib.HTTPSConnection(URL)
@@ -235,3 +235,89 @@ Key | Description
 ----| -----------
 schoolid | School id from the list of school
 studentid | Student id of the customer
+
+## Get fees
+
+```shell
+curl -X GET
+     -H "X-User-Email: warex03@gmail.com"
+     -H "X-User-Token: _KHS4euMs1At4jsUHHdR"
+     -F "ps_txn_id=PSS-00003631-00000357"
+     -F "bill_id=14300006-Midterm"
+https://www.payswitch.net/api/philsmile/fee
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+uri = URI("https://www.payswitch.net/api/philsmile/fee")
+
+params = {
+  ps_txn_id: "PSS-00003631-00000357",
+  bill_id: "14300006-Midterm"
+}
+uri.query = URI.encode_www_form(params)
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request_uri = Net::HTTP::Get.new(url.request_uri)
+request_uri["x-user-email"] = 'warex03@gmail.com'
+request_uri["x-user-token"] = '_KHS4euMs1At4jsUHHdR'
+
+
+response = http.request(request_uri)
+body = response.body
+```
+
+```python
+import urllib, httplib
+
+URL = "www.payswitch.net"
+URI = "/api/philsmile/fee"
+HEADERS = {
+    "X-User-Email" : "warex03@gmail.com",
+    "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
+}
+DATA = {
+  "ps_txn_id": "PSS-00003631-00000357",
+  "bill_id": "14300006-Midterm"
+}
+
+conn = httplib.HTTPSConnection(URL)
+conn.request("GET", URI, DATA, HEADERS)
+response = conn.getresponse()
+data = response.read()
+```
+
+> JSON output
+
+```json
+{
+  "sender_fee": "10.00",
+  "total": "550.00",
+  "ps_txn_id": "PSS-00003631-00000357"
+}
+```
+
+Get all the current fees from the school
+
+### HTTP REQUEST
+
+`GET https://www.payswitch.net/api/philsmile/fees`
+
+### PERMISSIONS
+
+User Type | Has access | Description
+--------- | ---------- | -----------
+Merchant | TRUE | All agents under its branches.
+Branch | TRUE | All agents under the branch.
+Agent | TRUE | All agents under the branch.
+
+### QUERY PARAMETERS
+Key | Description
+----|------------
+ps_txn_id | You can get the value for this parameter from the get bills API call.
+bill_id | The value of this parameter is the value of item id from the get bills API call.
