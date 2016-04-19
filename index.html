@@ -2882,7 +2882,7 @@ https://www.payswitch.net/api/philsmile/bills
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/philsmile/schools?schoolid=1738&amp;studentid=14300006"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/philsmile/bills"</span><span class="p">)</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="ss">schooldid: </span><span class="mi">1738</span><span class="p">,</span>
@@ -2911,8 +2911,8 @@ https://www.payswitch.net/api/philsmile/bills
     <span class="s">"X-User-Token"</span> <span class="p">:</span> <span class="s">"_KHS4euMs1At4jsUHHdR"</span>
 <span class="p">}</span>
 <span class="n">DATA</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">schoolid</span><span class="p">:</span> <span class="mi">1738</span><span class="p">,</span>
-  <span class="n">studentid</span><span class="p">:</span> <span class="mi">14300006</span>
+  <span class="s">"schoolid"</span><span class="p">:</span> <span class="s">"1738"</span><span class="p">,</span>
+  <span class="s">"studentid"</span><span class="p">:</span> <span class="s">"14300006"</span>
 <span class="p">}</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
@@ -3055,6 +3055,116 @@ https://www.payswitch.net/api/philsmile/bills
 <tr>
 <td>studentid</td>
 <td>Student id of the customer</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-fees">Get fees</h2>
+<pre><code class="highlight shell">curl -X GET
+     -H <span class="s2">"X-User-Email: warex03@gmail.com"</span>
+     -H <span class="s2">"X-User-Token: _KHS4euMs1At4jsUHHdR"</span>
+     -F <span class="s2">"ps_txn_id=PSS-00003631-00000357"</span>
+     -F <span class="s2">"bill_id=14300006-Midterm"</span>
+https://www.payswitch.net/api/philsmile/fee
+</code></pre>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/philsmile/fee"</span><span class="p">)</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">ps_txn_id: </span><span class="s2">"PSS-00003631-00000357"</span><span class="p">,</span>
+  <span class="ss">bill_id: </span><span class="s2">"14300006-Midterm"</span>
+<span class="p">}</span>
+<span class="n">uri</span><span class="p">.</span><span class="nf">query</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">encode_www_form</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request_uri</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
+<span class="n">request_uri</span><span class="p">[</span><span class="s2">"x-user-email"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'warex03@gmail.com'</span>
+<span class="n">request_uri</span><span class="p">[</span><span class="s2">"x-user-token"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'_KHS4euMs1At4jsUHHdR'</span>
+
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">httplib</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"www.payswitch.net"</span>
+<span class="n">URI</span> <span class="o">=</span> <span class="s">"/api/philsmile/fee"</span>
+<span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"X-User-Email"</span> <span class="p">:</span> <span class="s">"warex03@gmail.com"</span><span class="p">,</span>
+    <span class="s">"X-User-Token"</span> <span class="p">:</span> <span class="s">"_KHS4euMs1At4jsUHHdR"</span>
+<span class="p">}</span>
+<span class="n">DATA</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"ps_txn_id"</span><span class="p">:</span> <span class="s">"PSS-00003631-00000357"</span><span class="p">,</span>
+  <span class="s">"bill_id"</span><span class="p">:</span> <span class="s">"14300006-Midterm"</span>
+<span class="p">}</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">URI</span><span class="p">,</span> <span class="n">DATA</span><span class="p">,</span> <span class="n">HEADERS</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre>
+
+<blockquote>
+<p>JSON output</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"sender_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ps_txn_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PSS-00003631-00000357"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get all the current fees from the school</p>
+
+<h3 id="http-request">HTTP REQUEST</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/philsmile/fees</code></p>
+
+<h3 id="permissions">PERMISSIONS</h3>
+
+<table><thead>
+<tr>
+<th>User Type</th>
+<th>Has access</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Merchant</td>
+<td>TRUE</td>
+<td>All agents under its branches.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>TRUE</td>
+<td>All agents under the branch.</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>TRUE</td>
+<td>All agents under the branch.</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">QUERY PARAMETERS</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ps_txn_id</td>
+<td>You can get the value for this parameter from the get bills API call.</td>
+</tr>
+<tr>
+<td>bill_id</td>
+<td>The value of this parameter is the value of item id from the get bills API call.</td>
 </tr>
 </tbody></table>
 
