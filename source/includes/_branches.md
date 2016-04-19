@@ -1,4 +1,4 @@
-# Branches 
+# Branches
 
 ## Get All Branches
 
@@ -24,7 +24,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/branches"
 HEADERS = {
@@ -32,8 +32,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output
@@ -65,7 +64,13 @@ Get the list of branches.
 
 ### HTTP REQUEST
 
+### V1
+
 `GET http://www.payswitch.net/api/branches`
+
+### V2
+
+`GET https://www.payswitch.net/api/v2/branches`
 
 ### HEADER PARAMETERS
 
@@ -106,7 +111,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/branches/agents"
 HEADERS = {
@@ -114,8 +119,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output for Merchant
@@ -244,7 +248,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/branches/2"
 HEADERS = {
@@ -252,8 +256,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output
@@ -319,11 +322,17 @@ response = urllib2.urlopen(request).read()
 ]
 ```
 
-Get the details of a branch and its agents
+Get the details of a branch and its agents given its id.
 
 ### HTTP REQUEST
 
+### V1
+
 `GET http://www.payswitch.net/api/branches/<id>`
+
+### V2
+
+`GET https://www.payswitch.net/api/v2/branches/<id>/agents`
 
 ### HEADER PARAMETERS
 
@@ -339,3 +348,64 @@ User Type | Has access | Description
 Merchant | TRUE | Return agent details.
 Branch | FALSE | Permission error message.
 Agent | FALSE | Permission error message.
+
+## Disable / Enable an Agent
+
+```shell
+curl -X PUT 
+     -H "X-User-Email: meynardbs@gmail.com" 
+     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
+ "https://www.payswitch.net/api/v2/branches/<branch_id>/agents/<agent_id>/disable"
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://www.payswitch.net/api/v2/branches//agents//disable")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Put.new(url)
+request["x-user-email"] = 'meynardbs@gmail.com'
+request["x-user-token"] = 'HMMVS-fJe_kLTxK2wfRS'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+
+```
+> JSON Output
+
+```json
+{
+  "id": 85,
+  "email": "meynardbs@gmail.com",
+  "branch_id": 2,
+  "name": "Meynard Soriano",
+  "contact_number": "09158233358",
+  "banned": true,
+  "balance": "8.0"
+}
+```
+
+Disable / enable an agent given its branch id and agent id.
+
+### HTTP REQUEST
+
+`PUT`
+`https://www.payswitch.net/api/v2/branches/`
+`<branch_id>/agents/<agent_id>/disable`
+
+### HEADER PARAMETERS
+
+Parameter | Type | Description
+--------- | ---- | -----------   
+X-User-Email | string<br/>(required) | The user's email address
+X-User-Token | string<br/>(required) | The user's authentication token
+
+

@@ -25,15 +25,15 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/products"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > The JSON return value looks like this:
@@ -106,15 +106,15 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/products/<id>"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > The JSON return value looks like this:
@@ -140,7 +140,7 @@ response = urllib2.urlopen(request).read()
 ```json
 [
   {
-    "Error": "Couldn't find Product with id=500" 
+    "Error": "Couldn't find Product with id=500"
   }
 ]
 ```
@@ -182,7 +182,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/products/top"
 HEADERS = {
@@ -190,8 +190,7 @@ HEADERS = {
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
 }
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS)
 ```
 
 > JSON output
@@ -287,7 +286,7 @@ X-User-Token | string<br/>(required) | The user's authentication token
 ## Get Top Eloads
 
 ```shell
-curl -X GET 
+curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "type=eloads"
@@ -313,7 +312,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/products/top"
 HEADERS = {
@@ -323,11 +322,8 @@ HEADERS = {
 PARAMS = {
   'type': 'eloads'
 }
-QUERY_PARAMS = urllib.urlencode(PARAMS)
-URL = URL + '?' + QUERY_PARAMS
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS, data=PARAMS)
 ```
 
 > JSON output
@@ -485,7 +481,7 @@ body = response.body
 ```
 
 ```python
-import urllib2
+import requests
 
 URL = "http://www.payswitch.net/api/products/top"
 HEADERS = {
@@ -495,11 +491,8 @@ HEADERS = {
 PARAMS = {
   'type': 'billers'
 }
-QUERY_PARAMS = urllib.urlencode(PARAMS)
-URL = URL + '?' + QUERY_PARAMS
 
-request = urllib2.Request(URL, headers=HEADERS)
-response = urllib2.urlopen(request).read()
+response = requests.get(URL, headers=HEADERS, data=PARAMS)
 ```
 
 > JSON output

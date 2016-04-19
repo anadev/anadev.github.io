@@ -3,10 +3,10 @@
 ## Get Transaction Sales
 
 ```shell
-curl -X GET 
-     -H "X-User-Email: meynardbs@gmail.com" 
-     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS" 
-     -H "https://beta.payswitch.net/api/v2/analytics/sales"
+curl -X GET
+     -H "X-User-Email: meynardbs@gmail.com"
+     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
+"https://beta.payswitch.net/api/v2/analytics/sales"
 ```
 
 ```ruby
@@ -28,6 +28,7 @@ puts response.read_body
 ```
 
 ```python
+
 ```
 
 > The JSON return value looks like this:
@@ -73,4 +74,4 @@ X-User-Token | string<br/>(required) | The user's authentication token
 
 Parameter | Type | Description
 --------- | ---- | -----------
-duration  | string</br>(optional) | Frequency of transaction sales
+duration  | string</br>(optional) | Frequency of transaction sales.</br>(weekly or monthly)

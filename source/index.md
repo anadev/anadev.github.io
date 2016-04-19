@@ -15,8 +15,8 @@ includes:
   - register-user
   - auth
   - users
-  - v2/users
   - transactions
+  - wallet
   - analytics
   - product-categories
   - products
