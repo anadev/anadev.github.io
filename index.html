@@ -60,15 +60,24 @@
           <h1 id="authentication-token">Authentication Token</h1>
 
 <h2 id="get-session-token">Get Session Token</h2>
-<pre><code class="highlight shell">curl -X POST 
-     -F <span class="s2">"user[email]=meynardbs@gmail.com"</span> 
-     -F <span class="s2">"user[password]=password"</span> 
-     -F <span class="s2">"grant_type=password"</span> 
+<pre><code class="highlight shell">curl -X POST
+     -F <span class="s2">"user[email]=meynardbs@gmail.com"</span>
+     -F <span class="s2">"user[password]=password"</span>
+     -F <span class="s2">"grant_type=password"</span>
 <span class="s2">"https://www.payswitch.net/oauth/token"</span>
 </code></pre>
 <pre><code class="highlight ruby">
 </code></pre>
-<pre><code class="highlight python">
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/oauth/token"</span>
+<span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'user[email]'</span> <span class="p">:</span> <span class="s">'meynarddbs@gmail.com'</span><span class="p">,</span>
+  <span class="s">'user[password]'</span> <span class="p">:</span> <span class="s">'password'</span><span class="p">,</span>
+  <span class="s">'grant_type'</span> <span class="p">:</span> <span class="s">'password'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 
 </code></pre>
 
@@ -136,16 +145,15 @@ http://www.payswitch.net/api/users/current
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/users/current"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/users/current"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -194,8 +202,6 @@ http://www.payswitch.net/api/users/current
 </tr>
 </tbody></table>
 
-          <h1 id="[v2]-user">[V2] User</h1>
-
 <h2 id="update-user-information">Update User Information</h2>
 <pre><code class="highlight shell">curl -X PUT
      -H <span class="s2">"X-User-Email: warex03@gmail.com"</span>
@@ -204,11 +210,11 @@ http://www.payswitch.net/api/users/current
      -F <span class="s2">"contact_number=09271234567"</span>
      -F <span class="s2">"password=newpass"</span>
      -F <span class="s2">"current_password=oldpass"</span>
-https://www.payswitch.net/api/v2/users/&lt;id&gt;
+http://www.payswitch.net/api/v2/users/&lt;id&gt;
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/v2/users/&lt;id&gt;"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/v2/users/&lt;id&gt;"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="ss">name: </span><span class="s2">"Arvin Dinosaur"</span><span class="p">,</span>
   <span class="ss">contact_number: </span><span class="s2">"09271234567"</span><span class="p">,</span>
@@ -218,8 +224,6 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
 <span class="n">uri</span><span class="p">.</span><span class="nf">query</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">encode_www_form</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
-<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
-<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
 <span class="n">request_uri</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Put</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
 <span class="n">request_uri</span><span class="p">.</span><span class="nf">add_field</span><span class="p">(</span><span class="s2">"X-User-Email"</span><span class="p">,</span> <span class="s2">"warex03@gmail.com"</span><span class="p">)</span>
 <span class="n">request_uri</span><span class="p">.</span><span class="nf">add_field</span><span class="p">(</span><span class="s2">"X-User-Token"</span><span class="p">,</span> <span class="s2">"_KHS4euMs1At4jsUHHdR"</span><span class="p">)</span>
@@ -227,15 +231,24 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">httplib</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"www.payswitch.net"</span>
-<span class="n">URI</span> <span class="o">=</span> <span class="s">"/api/v2/users/&lt;id&gt;"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/v2/users/&lt;id&gt;"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"Content-type"</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
     <span class="s">"X-User-Email"</span> <span class="p">:</span> <span class="s">"warex03@gmail.com"</span><span class="p">,</span>
     <span class="s">"X-User-Token"</span> <span class="p">:</span> <span class="s">"_KHS4euMs1At4jsUHHdR"</span>
 <span class="p">}</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+
+<span class="n">OPENER</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPHandler</span><span class="p">)</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/v2/users/&lt;id&gt;"</span>
+<span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"X-User-Email"</span> <span class="p">:</span> <span class="s">"warex03@gmail.com"</span><span class="p">,</span>
+    <span class="s">"X-User-Token"</span> <span class="p">:</span> <span class="s">"_KHS4euMs1At4jsUHHdR"</span>
+<span class="p">}</span>
+
 <span class="n">DATA</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"name"</span> <span class="p">:</span> <span class="s">"Arvin Dinosaur"</span><span class="p">,</span>
   <span class="s">"contact_number"</span> <span class="p">:</span> <span class="s">"09271234567"</span><span class="p">,</span>
@@ -243,11 +256,10 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
   <span class="s">"current_password"</span> <span class="p">:</span> <span class="s">"oldpass"</span>
 <span class="p">}</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">DATA</span><span class="p">)</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">URI</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">DATA</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">get_method</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="s">'PUT'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </code></pre>
 
 <blockquote>
@@ -271,9 +283,9 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
 
 <p>Update the information of the current user</p>
 
-<h3 id="https-request">HTTPS Request</h3>
+<h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://www.payswitch.net/api/v2/users/&lt;id&gt;</code></p>
+<p><code class="prettyprint">PUT http://www.payswitch.net/api/v2/users/&lt;id&gt;</code></p>
 
 <h3 id="payload">Payload</h3>
 
@@ -301,7 +313,7 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
 </tr>
 <tr>
 <td>password</td>
-<td>string<br />(optional)</td>
+<td>string<br />(required)</td>
 <td>The user&rsquo;s new password</td>
 </tr>
 </tbody></table>
@@ -315,11 +327,6 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>Content-type</td>
-<td>string<br />(optional)</td>
-<td>For some libraries that url encodes the payload, specify the value as &lsquo;application/x-www-form-urlencoded&rsquo;</td>
-</tr>
 <tr>
 <td>X-User-Email</td>
 <td>string<br/>(required)</td>
@@ -345,11 +352,11 @@ https://www.payswitch.net/api/v2/users/&lt;id&gt;
      -F <span class="s2">"date_to=4/2/2015"</span>
      -F <span class="s2">"branch_id=2"</span>
      -F <span class="s2">"agent_id=3"</span>
-http://www.payswitch.net/api/v2/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="ss">per_page: </span><span class="mi">2</span><span class="p">,</span>
   <span class="ss">page: </span><span class="mi">1</span><span class="p">,</span>
@@ -369,9 +376,9 @@ http://www.payswitch.net/api/v2/transactions
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -385,11 +392,8 @@ http://www.payswitch.net/api/v2/transactions
     <span class="s">'branch_id'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="s">'agent_id'</span> <span class="p">:</span> <span class="mi">3</span>
 <span class="p">}</span>
-<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
-<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -562,7 +566,13 @@ http://www.payswitch.net/api/v2/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://www.payswitch.net/api/transactions</code></p>
+<h3 id="v1">V1</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/transactions</code></p>
+
+<h3 id="v2">V2</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/transactions</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -625,11 +635,11 @@ http://www.payswitch.net/api/v2/transactions
 <pre><code class="highlight shell">curl -X GET
      -H <span class="s1">'X-User-Email: warex03@gmail.com'</span>
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
-http://www.payswitch.net/api/transactions/&lt;id&gt;
+https://www.payswitch.net/api/transactions/&lt;id&gt;
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions/&lt;id&gt;"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions/&lt;id&gt;"</span><span class="p">)</span>
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">request_uri</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
 <span class="n">request_uri</span><span class="p">.</span><span class="nf">add_field</span><span class="p">(</span><span class="s1">'X-User-Email'</span><span class="p">,</span> <span class="s1">'warex03@gmail.com'</span><span class="p">)</span>
@@ -640,7 +650,7 @@ http://www.payswitch.net/api/transactions/&lt;id&gt;
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions/&lt;id&gt;"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions/&lt;id&gt;"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -698,7 +708,7 @@ http://www.payswitch.net/api/transactions/&lt;id&gt;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://www.payswitch.net/api/transactions/&lt;id&gt;</code></p>
+<p><code class="prettyprint">GET https://www.payswitch.net/api/transactions/&lt;id&gt;</code></p>
 
 <h3 id="header-parameters">Header Parameters</h3>
 
@@ -727,11 +737,11 @@ http://www.payswitch.net/api/transactions/&lt;id&gt;
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
      -F <span class="s2">"sku=GLOBE15"</span>
      -F <span class="s2">"payload[account_id]=09273031099"</span>
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"sku"</span> <span class="o">=&gt;</span> <span class="s2">"GLOBE15"</span><span class="p">,</span>
   <span class="s2">"payload[account_id]"</span> <span class="o">=&gt;</span> <span class="s2">"09273031099"</span>
@@ -747,7 +757,7 @@ http://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -810,7 +820,7 @@ http://www.payswitch.net/api/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://www.payswitch.net/api/transactions</code></p>
+<p><code class="prettyprint">POST https://www.payswitch.net/api/transactions</code></p>
 
 <h3 id="transaction-payloads">Transaction Payloads</h3>
 
@@ -860,11 +870,11 @@ http://www.payswitch.net/api/transactions
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
      -F <span class="s2">"product_id=336"</span>
      -F <span class="s2">"payload[account_id]=09273031099"</span>
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"product_id"</span> <span class="o">=&gt;</span> <span class="mi">336</span><span class="p">,</span>
   <span class="s2">"payload[account_id]"</span> <span class="o">=&gt;</span> <span class="s2">"09273031099"</span>
@@ -880,7 +890,7 @@ http://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -943,7 +953,7 @@ http://www.payswitch.net/api/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://www.payswitch.net/api/transactions</code></p>
+<p><code class="prettyprint">POST https://www.payswitch.net/api/transactions</code></p>
 
 <h3 id="transaction-payloads">Transaction Payloads</h3>
 
@@ -999,11 +1009,11 @@ http://www.payswitch.net/api/transactions
      -F <span class="s2">"customer[email]=koushirou_sugahara@armyspy.com"</span>
      -F <span class="s2">"customer[contact_number]=09123456789"</span>
      -F <span class="s2">"customer[address]=Tokyo Japan"</span>
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"sku"</span> <span class="o">=&gt;</span> <span class="s2">"MAYNILADWATER"</span><span class="p">,</span>
   <span class="s2">"cost"</span> <span class="o">=&gt;</span> <span class="s2">"999"</span><span class="p">,</span>
@@ -1025,7 +1035,7 @@ http://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -1095,7 +1105,7 @@ http://www.payswitch.net/api/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://www.payswitch.net/api/transactions</code></p>
+<p><code class="prettyprint">POST https://www.payswitch.net/api/transactions</code></p>
 
 <table><thead>
 <tr>
@@ -1179,11 +1189,11 @@ http://www.payswitch.net/api/transactions
      -F <span class="s2">"customer[email]=koushirou_sugahara@armyspy.com"</span>
      -F <span class="s2">"customer[contact_number]=09123456789"</span>
      -F <span class="s2">"customer[address]=Tokyo Japan"</span>
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"product_id"</span> <span class="o">=&gt;</span> <span class="s2">"183"</span><span class="p">,</span>
   <span class="s2">"cost"</span> <span class="o">=&gt;</span> <span class="s2">"999"</span><span class="p">,</span>
@@ -1205,7 +1215,7 @@ http://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -1275,7 +1285,7 @@ http://www.payswitch.net/api/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://www.payswitch.net/api/transactions</code></p>
+<p><code class="prettyprint">POST https://www.payswitch.net/api/transactions</code></p>
 
 <table><thead>
 <tr>
@@ -1358,11 +1368,11 @@ http://www.payswitch.net/api/transactions
      -F <span class="s2">"customer[email]=koushirou_sugahara@armyspy.com"</span>
      -F <span class="s2">"customer[contact_number]=09123456789"</span>
      -F <span class="s2">"customer[address]=Tokyo Japan"</span>
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"sku"</span> <span class="o">=&gt;</span> <span class="s2">"GCASH_COLLECT"</span><span class="p">,</span>
   <span class="s2">"cost"</span> <span class="o">=&gt;</span> <span class="s2">"999"</span><span class="p">,</span>
@@ -1383,7 +1393,7 @@ http://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -1451,7 +1461,7 @@ http://www.payswitch.net/api/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://www.payswitch.net/api/transactions</code></p>
+<p><code class="prettyprint">POST https://www.payswitch.net/api/transactions</code></p>
 
 <table><thead>
 <tr>
@@ -1529,11 +1539,11 @@ http://www.payswitch.net/api/transactions
      -F <span class="s2">"customer[email]=koushirou_sugahara@armyspy.com"</span>
      -F <span class="s2">"customer[contact_number]=09123456789"</span>
      -F <span class="s2">"customer[address]=Tokyo Japan"</span>
-http://www.payswitch.net/api/transactions
+https://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'net/https'</span>
 
-<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://www.payswitch.net/api/transactions"</span><span class="p">)</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/transactions"</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"sku"</span> <span class="o">=&gt;</span> <span class="s2">"123"</span><span class="p">,</span>
   <span class="s2">"cost"</span> <span class="o">=&gt;</span> <span class="s2">"999"</span><span class="p">,</span>
@@ -1554,7 +1564,7 @@ http://www.payswitch.net/api/transactions
 </code></pre>
 <pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/transactions"</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.payswitch.net/api/transactions"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
@@ -1622,7 +1632,7 @@ http://www.payswitch.net/api/transactions
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://www.payswitch.net/api/transactions</code></p>
+<p><code class="prettyprint">POST https://www.payswitch.net/api/transactions</code></p>
 
 <table><thead>
 <tr>
@@ -1690,9 +1700,9 @@ http://www.payswitch.net/api/transactions
 </tbody></table>
 
 <h2 id="get-revenue-report">Get Revenue Report</h2>
-<pre><code class="highlight shell">curl -X GET 
-     -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span> 
-     -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span> 
+<pre><code class="highlight shell">curl -X GET
+     -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span>
+     -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span>
 <span class="s2">"https://www.payswitch.net/api/v2/transactions/revenue-report"</span>
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
@@ -1755,13 +1765,79 @@ http://www.payswitch.net/api/transactions
 </tr>
 </tbody></table>
 
+          <h1 id="wallet">Wallet</h1>
+
+<h2 id="get-wallet-ledger">Get Wallet Ledger</h2>
+<pre><code class="highlight shell">curl -X GET 
+    -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span> 
+    -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span> 
+<span class="s2">"https://www.payswitch.net/api/v2/wallet/ledger"</span>
+</code></pre>
+<pre><code class="highlight python">
+</code></pre>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/v2/wallet/ledger"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-user-email"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'meynardbs@gmail.com'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-user-token"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'HMMVS-fJe_kLTxK2wfRS'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre>
+
+<blockquote>
+<p>JSON Output</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"date_from"</span><span class="p">:</span><span class="s2">"2016-04-17T13:53:50.553+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_to"</span><span class="p">:</span><span class="s2">"2016-04-18T05:53:50+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_debit_amount"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_credit_amount"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amounts"</span><span class="p">:[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get wallet ledger of the current user</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/wallet/ledger</code></p>
+
+<h3 id="header-parameters">Header Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-User-Email</td>
+<td>string<br/>(required)</td>
+<td>The user&rsquo;s email address</td>
+</tr>
+<tr>
+<td>X-User-Token</td>
+<td>string<br/>(required)</td>
+<td>The user&rsquo;s authentication token</td>
+</tr>
+</tbody></table>
+
           <h1 id="analytics">Analytics</h1>
 
 <h2 id="get-transaction-sales">Get Transaction Sales</h2>
-<pre><code class="highlight shell">curl -X GET 
-     -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span> 
-     -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span> 
-     -H <span class="s2">"https://beta.payswitch.net/api/v2/analytics/sales"</span>
+<pre><code class="highlight shell">curl -X GET
+     -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span>
+     -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span>
+<span class="s2">"https://beta.payswitch.net/api/v2/analytics/sales"</span>
 </code></pre>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
@@ -1779,7 +1855,8 @@ http://www.payswitch.net/api/transactions
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre>
-<pre><code class="highlight python"></code></pre>
+<pre><code class="highlight python">
+</code></pre>
 
 <blockquote>
 <p>The JSON return value looks like this:</p>
@@ -1847,7 +1924,7 @@ http://www.payswitch.net/api/transactions
 <tr>
 <td>duration</td>
 <td>string</br>(optional)</td>
-<td>Frequency of transaction sales</td>
+<td>Frequency of transaction sales.</br>(weekly or monthly)</td>
 </tr>
 </tbody></table>
 
@@ -1871,15 +1948,15 @@ http://www.payswitch.net/api/product_categories/main
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/product_categories/main"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -1923,7 +2000,13 @@ http://www.payswitch.net/api/product_categories/main
 
 <h3 id="http-request">HTTP Request</h3>
 
+<h3 id="v1">V1</h3>
+
 <p><code class="prettyprint">GET http://www.payswitch.net/api/product_categories/main</code></p>
+
+<h3 id="v2">V2</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/product_categories/main</code></p>
 
 <h3 id="header-parameters">Header Parameters</h3>
 
@@ -1964,15 +2047,15 @@ http://www.payswitch.net/api/product_categories/&lt;id&gt;
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/product_categories/&lt;id&gt;"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -2017,7 +2100,13 @@ http://www.payswitch.net/api/product_categories/&lt;id&gt;
 
 <h3 id="http-request">HTTP Request</h3>
 
+<h3 id="v1">V1</h3>
+
 <p><code class="prettyprint">GET http://www.payswitch.net/api/product_categories/&lt;id&gt;</code></p>
+
+<h3 id="v2">V2</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/product_categories/&lt;id&gt;</code></p>
 
 <h3 id="header-parameters">Header Parameters</h3>
 
@@ -2060,15 +2149,15 @@ http://www.payswitch.net/api/products
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/products"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -2148,15 +2237,15 @@ http://www.payswitch.net/api/products/&lt;id&gt;
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/products/&lt;id&gt;"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'X-User-Email'</span> <span class="p">:</span> <span class="s">'warex03@gmail.com'</span><span class="p">,</span>
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -2182,7 +2271,7 @@ http://www.payswitch.net/api/products/&lt;id&gt;
 </blockquote>
 <pre><code class="highlight json"><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Couldn't find Product with id=500"</span><span class="w"> 
+    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Couldn't find Product with id=500"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2232,7 +2321,7 @@ http://www.payswitch.net/api/products/top
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/products/top"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -2240,8 +2329,7 @@ http://www.payswitch.net/api/products/top
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -2349,7 +2437,7 @@ http://www.payswitch.net/api/products/top
 </tbody></table>
 
 <h2 id="get-top-eloads">Get Top Eloads</h2>
-<pre><code class="highlight shell">curl -X GET 
+<pre><code class="highlight shell">curl -X GET
      -H <span class="s1">'X-User-Email: warex03@gmail.com'</span>
      -H <span class="s1">'X-User-Token: _KHS4euMs1At4jsUHHdR'</span>
      -F <span class="s2">"type=eloads"</span>
@@ -2371,7 +2459,7 @@ http://www.payswitch.net/api/products/top
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/products/top"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -2381,11 +2469,8 @@ http://www.payswitch.net/api/products/top
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'type'</span><span class="p">:</span> <span class="s">'eloads'</span>
 <span class="p">}</span>
-<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
-<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -2561,7 +2646,7 @@ http://www.payswitch.net/api/products/top
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/products/top"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -2571,11 +2656,8 @@ http://www.payswitch.net/api/products/top
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'type'</span><span class="p">:</span> <span class="s">'billers'</span>
 <span class="p">}</span>
-<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
-<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -2998,19 +3080,15 @@ http://www.payswitch.net/api/receipts/&lt;id&gt;
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/receipts/&lt;id&gt;"</span>
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"type"</span> <span class="p">:</span> <span class="s">"sms"</span><span class="p">,</span>
     <span class="s">"recipient"</span> <span class="p">:</span> <span class="s">"09273031099"</span>
 <span class="p">}</span>
-<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
-<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3073,19 +3151,14 @@ http://www.payswitch.net/api/receipts/&lt;id&gt;
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/receipts/&lt;id&gt;"</span>
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"type"</span> <span class="p">:</span> <span class="s">"email"</span><span class="p">,</span>
     <span class="s">"recipient"</span> <span class="p">:</span> <span class="s">"benjamin.cueto@payswitch.net"</span>
 <span class="p">}</span>
-<span class="n">QUERY_PARAMS</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
-<span class="n">URL</span> <span class="o">=</span> <span class="n">URL</span> <span class="o">+</span> <span class="s">'?'</span> <span class="o">+</span> <span class="n">QUERY_PARAMS</span>
-
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3192,7 +3265,7 @@ http://www.payswitch.net/api/merchants/branches
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/merchants/branches"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -3200,8 +3273,7 @@ http://www.payswitch.net/api/merchants/branches
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3306,7 +3378,7 @@ http://www.payswitch.net/api/branches
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/branches"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -3314,8 +3386,7 @@ http://www.payswitch.net/api/branches
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3347,7 +3418,13 @@ http://www.payswitch.net/api/branches
 
 <h3 id="http-request">HTTP REQUEST</h3>
 
+<h3 id="v1">V1</h3>
+
 <p><code class="prettyprint">GET http://www.payswitch.net/api/branches</code></p>
+
+<h3 id="v2">V2</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/branches</code></p>
 
 <h3 id="header-parameters">HEADER PARAMETERS</h3>
 
@@ -3414,7 +3491,7 @@ http://www.payswitch.net/api/branches/agents
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/branches/agents"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -3422,8 +3499,7 @@ http://www.payswitch.net/api/branches/agents
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3576,7 +3652,7 @@ http://www.payswitch.net/api/branches/2
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/branches/2"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -3584,8 +3660,7 @@ http://www.payswitch.net/api/branches/2
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3651,11 +3726,17 @@ http://www.payswitch.net/api/branches/2
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>Get the details of a branch and its agents</p>
+<p>Get the details of a branch and its agents given its id.</p>
 
 <h3 id="http-request">HTTP REQUEST</h3>
 
+<h3 id="v1">V1</h3>
+
 <p><code class="prettyprint">GET http://www.payswitch.net/api/branches/&lt;id&gt;</code></p>
+
+<h3 id="v2">V2</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/branches/&lt;id&gt;/agents</code></p>
 
 <h3 id="header-parameters">HEADER PARAMETERS</h3>
 
@@ -3704,6 +3785,74 @@ http://www.payswitch.net/api/branches/2
 </tr>
 </tbody></table>
 
+<h2 id="disable-/-enable-an-agent">Disable / Enable an Agent</h2>
+<pre><code class="highlight shell">curl -X PUT 
+     -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span> 
+     -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span>
+ <span class="s2">"https://www.payswitch.net/api/v2/branches/&lt;branch_id&gt;/agents/&lt;agent_id&gt;/disable"</span>
+</code></pre>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/v2/branches//agents//disable"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Put</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-user-email"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'meynardbs@gmail.com'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-user-token"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'HMMVS-fJe_kLTxK2wfRS'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre>
+<pre><code class="highlight python">
+</code></pre>
+
+<blockquote>
+<p>JSON Output</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meynardbs@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"branch_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meynard Soriano"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09158233358"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"banned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Disable / enable an agent given its branch id and agent id.</p>
+
+<h3 id="http-request">HTTP REQUEST</h3>
+
+<p><code class="prettyprint">PUT</code>
+<code class="prettyprint">https://www.payswitch.net/api/v2/branches/</code>
+<code class="prettyprint">&lt;branch_id&gt;/agents/&lt;agent_id&gt;/disable</code></p>
+
+<h3 id="header-parameters">HEADER PARAMETERS</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-User-Email</td>
+<td>string<br/>(required)</td>
+<td>The user&rsquo;s email address</td>
+</tr>
+<tr>
+<td>X-User-Token</td>
+<td>string<br/>(required)</td>
+<td>The user&rsquo;s authentication token</td>
+</tr>
+</tbody></table>
+
           <h1 id="agents">Agents</h1>
 
 <h2 id="get-all-agents">Get All Agents</h2>
@@ -3724,7 +3873,7 @@ http://www.payswitch.net/api/agents
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/agents"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -3732,8 +3881,7 @@ http://www.payswitch.net/api/agents
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3771,7 +3919,13 @@ http://www.payswitch.net/api/agents
 
 <h3 id="http-request">HTTP REQUEST</h3>
 
-<p><code class="prettyprint">GET http://www.payswitch.net/api/agents</code></p>
+<h3 id="v1">V1</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/agents</code></p>
+
+<h3 id="v2">V2</h3>
+
+<p><code class="prettyprint">GET https://www.payswitch.net/api/v2/agents</code></p>
 
 <h3 id="header-parameters">HEADER PARAMETERS</h3>
 
@@ -3838,7 +3992,7 @@ http://www.payswitch.net/api/agents/8
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request_uri</span><span class="p">)</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">urllib2</span>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s">"http://www.payswitch.net/api/agents/8"</span>
 <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span>
@@ -3846,8 +4000,7 @@ http://www.payswitch.net/api/agents/8
     <span class="s">'X-User-Token'</span> <span class="p">:</span> <span class="s">'_KHS4euMs1At4jsUHHdR'</span>
 <span class="p">}</span>
 
-<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
@@ -3925,6 +4078,72 @@ http://www.payswitch.net/api/agents/8
 <td>Agent</td>
 <td>FALSE</td>
 <td>Permission error message.</td>
+</tr>
+</tbody></table>
+
+<h2 id="disable-/-enable-agent">Disable / Enable Agent</h2>
+<pre><code class="highlight shell">curl -X PUT 
+     -H <span class="s2">"X-User-Email: meynardbs@gmail.com"</span> 
+     -H <span class="s2">"X-User-Token: HMMVS-fJe_kLTxK2wfRS"</span> 
+ <span class="s2">"https://www.payswitch.net/api/v2/agents/85/disable"</span>
+</code></pre>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://www.payswitch.net/api/v2/agents/85/disable"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Put</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-user-email"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'meynardbs@gmail.com'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-user-token"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'HMMVS-fJe_kLTxK2wfRS'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre>
+<pre><code class="highlight python">
+</code></pre>
+
+<blockquote>
+<p>JSON Output</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meynardbs@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"branch_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meynard Soriano"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09158233358"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"banned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Disable / enable an agent given its id.</p>
+
+<h3 id="http-request">HTTP REQUEST</h3>
+
+<p><code class="prettyprint">PUT https://www.payswitch.net/api/v2/agents/&lt;id&gt;/disable</code></p>
+
+<h3 id="header-parameters">HEADER PARAMETERS</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-User-Email</td>
+<td>string<br/>(required)</td>
+<td>The user&rsquo;s email address</td>
+</tr>
+<tr>
+<td>X-User-Token</td>
+<td>string<br/>(required)</td>
+<td>The user&rsquo;s authentication token</td>
 </tr>
 </tbody></table>
 
