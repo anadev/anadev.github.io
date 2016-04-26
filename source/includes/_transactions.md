@@ -1102,6 +1102,103 @@ Parameter | Type | Description
 X-User-Email | string<br/>(required) | The user's email address
 X-User-Token | string<br/>(required) | The user's authentication token
 
+## Commit Transaction
+
+```shell
+curl -X GET
+     -H "X-User-Email: warex03@gmail.com"
+     -H "X-User-Token: _KHS4euMs1At4jsUHHdR"
+"https://www.payswitch.net/api/transactions/<id>/commit"
+```
+
+```ruby
+require 'net/https'
+
+uri = URI("https://www.payswitch.net/api/transactions/<id>/commit")
+http = Net::HTTP.new(uri.host)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+request_uri = Net::HTTP::Get.new(uri.request_uri)
+request_uri.add_field("X-User-Email", "warex03@gmail.com")
+request_uri.add_field("X-User-Token", "_KHS4euMs1At4jsUHHdR")
+
+response = http.request(request_uri)
+body = response.body
+```
+
+```python
+import httplib
+
+URL = "www.payswitch.net"
+URI = "/api/transactions/<id>/commit"
+HEADERS = {
+    "X-User-Email" : "warex03@gmail.com",
+    "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
+}
+
+conn = httplib.HTTPSConnection(URL)
+conn.request("GET", URI, None, HEADERS)
+response = conn.getresponse()
+data = response.read()
+```
+
+> JSON output
+
+```json
+{
+    "id": 1566,
+    "payload": {
+        "account_id": "09987654321"
+    },
+    "cost": "1.0",
+    "created_at": "2015-05-15T12:33:32.315+08:00",
+    "provider_refno": "12345",
+    "provider_message": {
+        "code": "12345",
+        "message": "Transaction successful."
+    },
+    "transaction_status": {
+        "code": "00",
+        "name": "Successful",
+        "description": "Transaction has been successful"
+    },
+    "user": {
+        "id": 2,
+        "type": "Branch",
+        "name": "Demo Branch",
+        "merchant": {
+            "id": 1,
+            "name": "Demo Merchant"
+        }
+    },
+    "provider_product": {
+        "id": 123,
+        "product_category_root_id": 12,
+        "product": {
+            "id": 123,
+            "name": "GCash Collect"
+        },
+        "provider": {
+            "id": 4,
+            "name": "Gcash"
+        }
+    }
+}
+```
+
+Commit a pending transaction.
+
+### HTTP Request
+
+`GET https://www.payswitch.net/api/transactions/<id>/commit`
+
+### Header Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+X-User-Email | string<br/>(required) | The user's email address
+X-User-Token | string<br/>(required) | The user's authentication token
+
 ## Get Revenue Report
 
 ```shell
