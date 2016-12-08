@@ -21,6 +21,7 @@ includes:
   - product-categories
   - products
   - philsmile
+  - travel
   - receipts
   - merchants
   - branches
