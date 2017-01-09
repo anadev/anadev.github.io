@@ -1,5 +1,5 @@
 ---
-title: Payswitch API Reference
+title: Payswitch API Reference v2
 
 language_tabs:
   - shell
