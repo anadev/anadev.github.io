@@ -76,7 +76,8 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: $nav-bg;
+  // background-color: $nav-bg;
+  background-color: $custom-sidebar-bg;
   font-size: 13px;
   font-weight: bold;
 
@@ -138,6 +139,7 @@ html, body {
     }
 
     @include embossed-bg;
+    // background-color: ;
 
     li {
       margin: 1em $nav-padding;
@@ -146,6 +148,7 @@ html, body {
 
     a {
       color: $nav-text;
+      // color: $custom-sidebar-text;
       text-decoration: none;
 
       &:hover {
@@ -174,7 +177,8 @@ html, body {
   }
 
   li {
-    color: $nav-text;
+    // color: $nav-text;
+    color: $custom-sidebar-text;
     @include transition-property('background');
     @include transition-timing-function('linear');
     @include transition-duration(230ms);
@@ -182,7 +186,7 @@ html, body {
 
   // This is the currently selected ToC entry
   .tocify-focus {
-    @include box-shadow(0px 1px 0px $nav-active-shadow);
+    // @include box-shadow(0px 1px 0px $nav-active-shadow);
     background-color: $nav-active-bg;
     color: $nav-active-text;
   }
@@ -191,7 +195,8 @@ html, body {
   // in the table of contents.
   .tocify-subheader {
     display: none; // tocify will override this when needed
-    background-color: $nav-subitem-bg;
+    // background-color: $nav-subitem-bg;
+    background-color: $custom-sidebar-bg;
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
@@ -199,7 +204,7 @@ html, body {
     }
 
     // for embossed look:
-    @include embossed-bg;
+    // @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
     }
@@ -211,7 +216,8 @@ html, body {
     border-top: 1px dashed $nav-footer-border-color;
 
     li,a {
-      color: $nav-text;
+      // color: $nav-text;
+      color: $custom-sidebar-text;
       text-decoration: none;
     }
 
