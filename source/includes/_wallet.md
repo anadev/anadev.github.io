@@ -6,7 +6,7 @@
 curl -X GET 
     -H "X-User-Email: meynardbs@gmail.com" 
     -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS" 
-"https://www.payswitch.net/api/v2/wallet/ledger"
+"https://try.payswitch.net/api/v2/wallet/ledger"
 ```
 
 ```python
@@ -17,7 +17,7 @@ curl -X GET
 require 'uri'
 require 'net/http'
 
-url = URI("https://www.payswitch.net/api/v2/wallet/ledger")
+url = URI("https://try.payswitch.net/api/v2/wallet/ledger")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -45,7 +45,7 @@ Get wallet ledger of the current user
 
 ### HTTP Request
 
-`GET https://www.payswitch.net/api/v2/wallet/ledger`
+`GET https://try.payswitch.net/api/v2/wallet/ledger`
 
 ### Header Parameters
 

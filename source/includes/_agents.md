@@ -6,13 +6,13 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/agents
+https://try.payswitch.net/api/agents
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/agents")
+uri = URI("https://try.payswitch.net/api/agents")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -20,13 +20,12 @@ request_uri.add_field('X-User-Email', 'warex03@gmail.com')
 request_uri.add_field('X-User-Token', '_KHS4euMs1At4jsUHHdR')
 
 response = http.request(request_uri)
-body = response.body
 ```
 
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/agents"
+URL = "https://try.payswitch.net/api/agents"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -72,11 +71,11 @@ Get the list of all agents
 
 ### V1
 
-`GET https://www.payswitch.net/api/agents`
+`GET https://try.payswitch.net/api/agents`
 
 ### V2
 
-`GET https://www.payswitch.net/api/v2/agents`
+`GET https://try.payswitch.net/api/v2/agents`
 
 ### HEADER PARAMETERS
 
@@ -100,13 +99,13 @@ Agent | FALSE | Permission error message
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/agents/8
+https://try.payswitch.net/api/agents/8
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/agents/8")
+uri = URI("https://try.payswitch.net/api/agents/8")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -120,7 +119,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/agents/8"
+URL = "https://try.payswitch.net/api/agents/8"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -158,7 +157,7 @@ Get the details of an agent given its id.
 
 ### HTTP REQUEST
 
-`GET http://www.payswitch.net/api/agents/<id>`
+`GET https://try.payswitch.net/api/agents/<id>`
 
 ### HEADER PARAMETERS
 
@@ -181,14 +180,14 @@ Agent | FALSE | Permission error message.
 curl -X PUT 
      -H "X-User-Email: meynardbs@gmail.com" 
      -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS" 
- "https://www.payswitch.net/api/v2/agents/85/disable"
+ "https://try.payswitch.net/api/v2/agents/85/disable"
 ```
 
 ```ruby
 require 'uri'
 require 'net/http'
 
-url = URI("https://www.payswitch.net/api/v2/agents/85/disable")
+url = URI("https://try.payswitch.net/api/v2/agents/85/disable")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -223,7 +222,7 @@ Disable / enable an agent given its id.
 
 ### HTTP REQUEST
 
-`PUT https://www.payswitch.net/api/v2/agents/<id>/disable`
+`PUT https://try.payswitch.net/api/v2/agents/<id>/disable`
 
 ### HEADER PARAMETERS
 

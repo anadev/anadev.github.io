@@ -7,13 +7,13 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/products
+https://try.payswitch.net/api/products
 ```
 
 ```ruby
 require 'net/https'
 
-URL = "http://www.payswitch.net/api/products"
+URL = "https://try.payswitch.net/api/products"
 
 uri = URI.parse(URL)
 http = Net::HTTP.new(uri.host, uri.port)
@@ -27,7 +27,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/products"
+URL = "https://try.payswitch.net/api/products"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -72,7 +72,7 @@ Get the list of all products.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/products`
+`GET https://try.payswitch.net/api/products`
 
 ### Header Parameters
 
@@ -88,13 +88,13 @@ X-User-Token | string<br/>(required) | The user's authentication token
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/products/<id>
+https://try.payswitch.net/api/products/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-URL = "http://www.payswitch.net/api/products/<id>"
+URL = "https://try.payswitch.net/api/products/<id>"
 
 uri = URI.parse(URL)
 http = Net::HTTP.new(uri.host, uri.port)
@@ -108,7 +108,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/products/<id>"
+URL = "https://try.payswitch.net/api/products/<id>"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -149,7 +149,7 @@ Get the details of a product given its id.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/products/<id>`
+`GET https://try.payswitch.net/api/products/<id>`
 
 ### Header Parameters
 
@@ -164,13 +164,13 @@ X-User-Token | string<br/>(required) | The user's authentication token
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/products/top
+https://try.payswitch.net/api/products/top
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/products/top")
+uri = URI("https://try.payswitch.net/api/products/top")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -184,7 +184,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/products/top"
+URL = "https://try.payswitch.net/api/products/top"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -274,7 +274,7 @@ Get top 10 products of the day.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/products/top`
+`GET https://try.payswitch.net/api/products/top`
 
 ### Header Parameters
 
@@ -290,13 +290,13 @@ curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "type=eloads"
-http://www.payswitch.net/api/products/top
+https://try.payswitch.net/api/products/top
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/products/top")
+uri = URI("https://try.payswitch.net/api/products/top")
 params = {
   type: 'eloads'
 }
@@ -314,7 +314,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/products/top"
+URL = "https://try.payswitch.net/api/products/top"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -437,7 +437,7 @@ Get top 10 eload products of the month.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/products/top`
+`GET https://try.payswitch.net/api/products/top`
 
 ### Header Parameters
 
@@ -459,13 +459,13 @@ curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
      -F "type=billers"
-http://www.payswitch.net/api/products/top
+https://try.payswitch.net/api/products/top
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/products/top")
+uri = URI("https://try.payswitch.net/api/products/top")
 params = {
   type: 'billers'
 }
@@ -483,7 +483,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/products/top"
+URL = "https://try.payswitch.net/api/products/top"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -556,7 +556,7 @@ Get top 10 billers of the month.
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/products/top`
+`GET https://try.payswitch.net/api/products/top`
 
 ### Header Parameters
 

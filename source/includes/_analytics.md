@@ -6,22 +6,22 @@
 curl -X GET
      -H "X-User-Email: meynardbs@gmail.com"
      -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
-"https://beta.payswitch.net/api/v2/analytics/sales"
+"https://try.payswitch.net/api/v2/analytics/sales"
 ```
 
 ```ruby
 require 'uri'
-require 'net/http'
+require 'net/https'
 
-url = URI("https://beta.payswitch.net/api/v2/analytics/sales")
+url = URI("https://try.payswitch.net/api/v2/analytics/sales")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
-request["x-user-email"] = 'meynardbs@gmail.com'
-request["x-user-token"] = 'HMMVS-fJe_kLTxK2wfRS'
+request["X-User-Email"] = 'meynardbs@gmail.com'
+request["X-User-Token"] = 'HMMVS-fJe_kLTxK2wfRS'
 
 response = http.request(request)
 puts response.read_body
@@ -61,7 +61,7 @@ Get weekly or monthly sales of the user
 
 ### HTTP Request
 
-`GET https://www.payswitch.net/api/v2/analytics/sales`
+`GET https://try.payswitch.net/api/v2/analytics/sales`
 
 ### Header Parameters
 

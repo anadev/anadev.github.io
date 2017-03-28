@@ -6,13 +6,13 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/branches
+https://try.payswitch.net/api/branches
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/branches")
+uri = URI("https://try.payswitch.net/api/branches")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -26,7 +26,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/branches"
+URL = "https://try.payswitch.net/api/branches"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -66,11 +66,11 @@ Get the list of branches.
 
 ### V1
 
-`GET http://www.payswitch.net/api/branches`
+`GET https://try.payswitch.net/api/branches`
 
 ### V2
 
-`GET https://www.payswitch.net/api/v2/branches`
+`GET https://try.payswitch.net/api/v2/branches`
 
 ### HEADER PARAMETERS
 
@@ -93,13 +93,13 @@ Agent | FALSE | Permission error message
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/branches/agents
+https://try.payswitch.net/api/branches/agents
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/branches/agents")
+uri = URI("https://try.payswitch.net/api/branches/agents")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -113,7 +113,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/branches/agents"
+URL = "https://try.payswitch.net/api/branches/agents"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -205,7 +205,7 @@ Get ID, name and its agents when current user is a Branch
 
 ### HTTP REQUEST
 
-`GET http://www.payswitch.net/api/branches/agents`
+`GET https://try.payswitch.net/api/branches/agents`
 
 ### HEADER PARAMETERS
 
@@ -230,13 +230,13 @@ Agent | FALSE | Permission error message
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/branches/2
+https://try.payswitch.net/api/branches/2
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/branches/2")
+uri = URI("https://try.payswitch.net/api/branches/2")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -250,7 +250,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/branches/2"
+URL = "https://try.payswitch.net/api/branches/2"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -328,11 +328,11 @@ Get the details of a branch and its agents given its id.
 
 ### V1
 
-`GET http://www.payswitch.net/api/branches/<id>`
+`GET https://try.payswitch.net/api/branches/<id>`
 
 ### V2
 
-`GET https://www.payswitch.net/api/v2/branches/<id>/agents`
+`GET https://try.payswitch.net/api/v2/branches/<id>/agents`
 
 ### HEADER PARAMETERS
 
@@ -355,14 +355,14 @@ Agent | FALSE | Permission error message.
 curl -X PUT 
      -H "X-User-Email: meynardbs@gmail.com" 
      -H "X-User-Token: HMMVS-fJe_kLTxK2wfRS"
- "https://www.payswitch.net/api/v2/branches/<branch_id>/agents/<agent_id>/disable"
+ "https://try.payswitch.net/api/v2/branches/<branch_id>/agents/<agent_id>/disable"
 ```
 
 ```ruby
 require 'uri'
 require 'net/http'
 
-url = URI("https://www.payswitch.net/api/v2/branches//agents//disable")
+url = URI("https://try.payswitch.net/api/v2/branches//agents//disable")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -398,7 +398,7 @@ Disable / enable an agent given its branch id and agent id.
 ### HTTP REQUEST
 
 `PUT`
-`https://www.payswitch.net/api/v2/branches/`
+`https://try.payswitch.net/api/v2/branches/`
 `<branch_id>/agents/<agent_id>/disable`
 
 ### HEADER PARAMETERS

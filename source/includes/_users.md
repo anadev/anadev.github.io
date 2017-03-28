@@ -6,13 +6,13 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/users/current
+https://try.payswitch.net/api/users/current
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/users/current")
+uri = URI("https://try.payswitch.net/api/users/current")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -26,7 +26,7 @@ body = response.body
 ```python
 import requests
 
-URL = "https://www.payswitch.net/api/users/current"
+URL = "https://try.payswitch.net/api/users/current"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -56,7 +56,7 @@ Get the details of the current user
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/users/current`
+`GET https://try.payswitch.net/api/users/current`
 
 ### Header Parameters
 
@@ -75,13 +75,13 @@ curl -X PUT
      -F "contact_number=09271234567"
      -F "password=newpass"
      -F "current_password=oldpass"
-http://www.payswitch.net/api/v2/users/<id>
+https://try.payswitch.net/api/v2/users/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/v2/users/<id>")
+uri = URI("https://try.payswitch.net/api/v2/users/<id>")
 params = {
   name: "Arvin Dinosaur",
   contact_number: "09271234567",
@@ -103,7 +103,7 @@ body = response.body
 import urllib
 import urllib2
 
-URL = "http://www.payswitch.net/api/v2/users/<id>"
+URL = "https://try.payswitch.net/api/v2/users/<id>"
 HEADERS = {
     "X-User-Email" : "warex03@gmail.com",
     "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
@@ -112,7 +112,7 @@ import urllib
 import urllib2
 
 OPENER = urllib2.build_opener(urllib2.HTTPHandler)
-URL = "http://www.payswitch.net/api/v2/users/<id>"
+URL = "https://try.payswitch.net/api/v2/users/<id>"
 HEADERS = {
     "X-User-Email" : "warex03@gmail.com",
     "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
@@ -153,7 +153,7 @@ Update the information of the current user
 
 ### HTTP Request
 
-`PUT http://www.payswitch.net/api/v2/users/<id>`
+`PUT https://try.payswitch.net/api/v2/users/<id>`
 
 ### Payload
 

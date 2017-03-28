@@ -6,13 +6,13 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/merchants/branches
+https://try.payswitch.net/api/merchants/branches
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("http://www.payswitch.net/api/merchants/branches")
+uri = URI("https://try.payswitch.net/api/merchants/branches")
 
 http = Net::HTTP.new(uri.host, uri.port)
 request_uri = Net::HTTP::Get.new(uri.request_uri)
@@ -26,7 +26,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/merchants/branches"
+URL = "https://try.payswitch.net/api/merchants/branches"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -66,7 +66,7 @@ Get the details of the current user
 
 ### HTTP Request
 
-`GET http://www.payswitch.net/api/merchants/branches`
+`GET https://try.payswitch.net/api/merchants/branches`
 
 ### Header Parameters
 

@@ -6,14 +6,14 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-user-Token: _KHS4euMs1At4jsUHHdR'
-https://www.payswitch.net/api/philsmile/schools
+https://try.payswitch.net/api/philsmile/schools
 ```
 
 ```ruby
 require 'uri'
 require 'net/http'
 
-url = URI("https://www.payswitch.net/api/philsmile/schools")
+url = URI("https://try.payswitch.net/api/philsmile/schools")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -69,7 +69,7 @@ Get all the available schools
 
 ### HTTPS REQUEST
 
-`GET https://www.payswitch.net/api/philsmile/schools`
+`GET https://try.payswitch.net/api/philsmile/schools`
 
 ### PERMISSIONS
 
@@ -95,14 +95,14 @@ curl -X GET
      -H "X-User-Token: _KHS4euMs1At4jsUHHdR"
      -F "schoolid=1738"
      -F "studentid=14300006"
-https://www.payswitch.net/api/philsmile/bills
+https://try.payswitch.net/api/philsmile/bills
 ```
 
 ```ruby
 require 'uri'
 require 'net/http'
 
-uri = URI("https://www.payswitch.net/api/philsmile/bills")
+uri = URI("https://try.payswitch.net/api/philsmile/bills")
 
 params = {
   schooldid: 1738,
@@ -213,7 +213,7 @@ Get school bills of the customer. This is not required for signed schools.
 
 ### HTTP REQUEST
 
-`GET https://www.payswitch.net/api/philsmile/bills`
+`GET https://try.payswitch.net/api/philsmile/bills`
 
 ### HEADER PARAMETERS
 Parameter | Type | Description
@@ -244,14 +244,14 @@ curl -X GET
      -H "X-User-Token: _KHS4euMs1At4jsUHHdR"
      -F "ps_txn_id=PSS-00003631-00000357"
      -F "bill_id=14300006-Midterm"
-https://www.payswitch.net/api/philsmile/fee
+https://try.payswitch.net/api/philsmile/fee
 ```
 
 ```ruby
 require 'uri'
 require 'net/http'
 
-uri = URI("https://www.payswitch.net/api/philsmile/fee")
+uri = URI("https://try.payswitch.net/api/philsmile/fee")
 
 params = {
   ps_txn_id: "PSS-00003631-00000357",
@@ -306,7 +306,7 @@ Get all the current fees from the school
 
 ### HTTP REQUEST
 
-`GET https://www.payswitch.net/api/philsmile/fees`
+`GET https://try.payswitch.net/api/philsmile/fees`
 
 ### PERMISSIONS
 

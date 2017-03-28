@@ -6,19 +6,19 @@
 curl -X PUT
      -H "X-User-Email: warex03@gmail.com"
      -H "X-User-Token: _KHS4euMs1At4jsUHHdR"
-     -F "name=Arvin Dinosaur"
+     -F "name=Arvin Dino"
      -F "contact_number=09271234567"
      -F "password=newpass"
      -F "current_password=oldpass"
-https://www.payswitch.net/api/v2/users/<id>
+https://try.payswitch.net/api/v2/users/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI("https://www.payswitch.net/api/v2/users/<id>")
+uri = URI("https://try.payswitch.net/api/v2/users/<id>")
 params = {
-  name: "Arvin Dinosaur",
+  name: "Arvin Dino",
   contact_number: "09271234567",
   password: "newpass",
   current_password: "oldpass"
@@ -47,7 +47,7 @@ HEADERS = {
     "X-User-Token" : "_KHS4euMs1At4jsUHHdR"
 }
 DATA = {
-  "name" : "Arvin Dinosaur",
+  "name" : "Arvin Dino",
   "contact_number" : "09271234567",
   "password" : "newpass",
   "current_password" : "oldpass"
@@ -67,7 +67,7 @@ data = response.read()
     "info": {
         "id": 1,
         "email": "warex03@gmail.com",
-        "name": "Arvin Dinosaur",
+        "name": "Arvin Dino",
         "authentication_token": "_KHS4euMs1At4jsUHHdR",
         "contact_number": "09271234567",
         "banned": false
@@ -82,16 +82,16 @@ Update the information of the current user
 
 ### HTTPS Request
 
-`PUT https://www.payswitch.net/api/v2/users/<id>`
+`PUT https://try.payswitch.net/api/v2/users/<id>`
 
 ### Payload
 
-Parameter | Type | Description
---------- | ------- | -----------
-name | string<br />(optional) | The user's name
-contact_number | string<br />(optional) | The user's contact number
+Parameter        | Type                   | Description
+---------------- | ---------------------- | ---------------------------
+name             | string<br />(optional) | The user's name
+contact_number   | string<br />(optional) | The user's contact number
 current_password | string<br />(required) | The user's current password
-password | string<br />(optional) | The user's new password
+password         | string<br />(optional) | The user's new password
 
 ### Header Parameters
 

@@ -6,13 +6,13 @@
 curl -X	POST
 	 -F 'type=sms'
 	 -F 'recipient=09273031099'
-http://www.payswitch.net/api/receipts/<id>
+https://try.payswitch.net/api/receipts/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI('http://www.payswitch.net/api/receipts/<id>')
+uri = URI('https://try.payswitch.net/api/receipts/<id>')
 params = {
 	"type" => "sms",
 	"recipient" => "09273031099"
@@ -28,7 +28,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/receipts/<id>"
+URL = "https://try.payswitch.net/api/receipts/<id>"
 PARAMS = {
 	"type" : "sms",
 	"recipient" : "09273031099"
@@ -69,13 +69,13 @@ recipient | string<br/>(optional) | Mobile number where the receipt will be sent
 curl -X	POST
 	 -F 'type=email'
 	 -F 'recipient=warex03@gmail.com'
-http://www.payswitch.net/api/receipts/<id>
+https://try.payswitch.net/api/receipts/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-uri = URI('http://www.payswitch.net/api/receipts/<id>')
+uri = URI('https://try.payswitch.net/api/receipts/<id>')
 params = {
 	"type" => "email",
 	"recipient" => "warex03@gmail.com"
@@ -91,7 +91,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/receipts/<id>"
+URL = "https://try.payswitch.net/api/receipts/<id>"
 PARAMS = {
 	"type" : "email",
 	"recipient" : "benjamin.cueto@payswitch.net"

@@ -7,13 +7,13 @@
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/product_categories/main
+https://try.payswitch.net/api/product_categories/main
 ```
 
 ```ruby
 require 'net/https'
 
-URL = "http://www.payswitch.net/api/product_categories/main"
+URL = "https://try.payswitch.net/api/product_categories/main"
 
 uri = URI.parse(URL)
 http = Net::HTTP.new(uri.host, uri.port)
@@ -27,7 +27,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/product_categories/main"
+URL = "https://try.payswitch.net/api/product_categories/main"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -78,10 +78,10 @@ Get the main product categories.
 ### HTTP Request
 
 ### V1
-`GET http://www.payswitch.net/api/product_categories/main`
+`GET https://try.payswitch.net/api/product_categories/main`
 
 ### V2
-`GET https://www.payswitch.net/api/v2/product_categories/main`
+`GET https://try.payswitch.net/api/v2/product_categories/main`
 
 ### Header Parameters
 
@@ -97,13 +97,13 @@ X-User-Token | string<br/>(required) | The user's authentication token
 curl -X GET
      -H 'X-User-Email: warex03@gmail.com'
      -H 'X-User-Token: _KHS4euMs1At4jsUHHdR'
-http://www.payswitch.net/api/product_categories/<id>
+https://try.payswitch.net/api/product_categories/<id>
 ```
 
 ```ruby
 require 'net/https'
 
-URL = "http://www.payswitch.net/api/product_categories/<id>"
+URL = "https://try.payswitch.net/api/product_categories/<id>"
 
 uri = URI.parse(URL)
 http = Net::HTTP.new(uri.host, uri.port)
@@ -117,7 +117,7 @@ body = response.body
 ```python
 import requests
 
-URL = "http://www.payswitch.net/api/product_categories/<id>"
+URL = "https://try.payswitch.net/api/product_categories/<id>"
 HEADERS = {
     'X-User-Email' : 'warex03@gmail.com',
     'X-User-Token' : '_KHS4euMs1At4jsUHHdR'
@@ -169,10 +169,10 @@ Get the product categories containing the list of their products (if available).
 ### HTTP Request
 
 ### V1
-`GET http://www.payswitch.net/api/product_categories/<id>`
+`GET https://try.payswitch.net/api/product_categories/<id>`
 
 ### V2
-`GET https://www.payswitch.net/api/v2/product_categories/<id>`
+`GET https://try.payswitch.net/api/v2/product_categories/<id>`
 
 ### Header Parameters
 
