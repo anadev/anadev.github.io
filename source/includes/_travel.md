@@ -19,7 +19,7 @@ curl -X GET
      -F "senior_citizen=0"
      -F "direct_access=0"
      -F "trans_fee_flag=1"
-https://try.payswitch.net/api/v2/biyaheko/flights
+https://try.payswitch.net/api/v2/travel/flights
 ```
 
 ```ruby
@@ -27,7 +27,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-uri = URI("https://try.payswitch.net/api/v2/biyaheko/flights")
+uri = URI("https://try.payswitch.net/api/v2/travel/flights")
 
 params = {  
    booking_type:'O',
@@ -62,7 +62,7 @@ puts response.read_body
 ```python
 import requests 
 
-URL = "https://try.payswitch.net/api/v2/biyaheko/flights"
+URL = "https://try.payswitch.net/api/v2/travel/flights"
 HEADERS = {
     'X-User-Email' : 'demoapiuser@demo.com',
     'X-User-Token' : '9xDx4rzx8YmqzPmUC8C4'
@@ -488,7 +488,7 @@ Get all the available flights.
 
 ### HTTP REQUEST
 
-`GET https://try.payswitch.net/api/v2/biyaheko/flights`
+`GET https://try.payswitch.net/api/v2/travel/flights`
 
 ### HEADER PARAMETERS
 Parameter | Type | Description
@@ -529,7 +529,7 @@ curl -X GET
      -F "airline_id=Z2"
      -F "flight_id=101"
      -F "rbd=Z"
-https://try.payswitch.net/api/v2/biyaheko/farerule
+https://try.payswitch.net/api/v2/travel/flights/farerule
 ```
 
 ```ruby
@@ -537,7 +537,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-uri = URI("https://try.payswitch.net/api/v2/biyaheko/farerule")
+uri = URI("https://try.payswitch.net/api/v2/travel/flights/farerule")
 
 params = {
   session_id:'YRKSNMO97699909991877983968668964804728',
@@ -563,7 +563,7 @@ puts response.read_body
 ```python
 import requests 
 
-URL = "https://try.payswitch.net/api/v2/biyaheko/farerule"
+URL = "https://try.payswitch.net/api/v2/travel/flights/farerule"
 HEADERS = {
     'X-User-Email' : 'demoapiuser@demo.com',
     'X-User-Token' : '9xDx4rzx8YmqzPmUC8C4'
@@ -591,7 +591,7 @@ Get fare rule for specific airline.
 
 ### HTTP REQUEST
 
-`GET https://try.payswitch.net/api/v2/biyaheko/farerule`
+`GET https://try.payswitch.net/api/v2/travel/flights/farerule`
 
 ### HEADER PARAMETERS
 Parameter | Type | Description
@@ -624,7 +624,7 @@ curl -X GET
      -F "flights[][basic_amount]=1125"
      -F "trans_fee_flag=0"
      -F "senior_citizen=0"
-https://try.payswitch.net/api/v2/biyaheko/tax/YRKSNMO97699909991877983968668964804728
+https://try.payswitch.net/api/v2/travel/flights/tax/YRKSNMO97699909991877983968668964804728
 ```
 
 ```ruby
@@ -633,7 +633,7 @@ require 'uri'
 require 'openssl'
 
 
-uri = URI("https://try.payswitch.net/api/v2/biyaheko/tax/YRKSNMO97699909991877983968668964804728")
+uri = URI("https://try.payswitch.net/api/v2/travel/flights/tax/YRKSNMO97699909991877983968668964804728")
 
 http = Net::HTTP.new(uri.host, uri.port)
 
@@ -662,7 +662,7 @@ puts response.read_body
 ```python
 import requests
 
-URL = 'https://try.payswitch.net/api/v2/biyaheko/tax/YRKSNMO97699909991877983968668964804728'
+URL = 'https://try.payswitch.net/api/v2/travel/flights/tax/YRKSNMO97699909991877983968668964804728'
 
 HEADERS = {
     'X-User-Email': 'demoapiuser@demo.com',
@@ -849,7 +849,7 @@ Get tax for flight.
 
 ### HTTP REQUEST
 
-`GET https://try.payswitch.net/api/v2/biyaheko/tax/<session_id>` 
+`GET https://try.payswitch.net/api/v2/travel/flights/tax/<session_id>` 
 
 ### HEADER PARAMETERS
 Parameter | Type | Description
